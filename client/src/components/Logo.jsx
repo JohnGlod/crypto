@@ -1,13 +1,16 @@
-import { Link } from 'react-router-dom';
-
-export const Logo = (props) => {
-  const { theme = 'Dark' } = props;
+import { useDarkMode } from '../hooks/useDarkMode';
+export const Logo = () => {
+  const [isDarkMode, toggleDarkMode] = useDarkMode();
+  const logoSrc = isDarkMode
+    ? 'images/logo/Dark.svg'
+    : '/images/logo/Light.svg';
   return (
-    <Link to={'/'}>
-      <div className='flex gap-1 items-center shrink-0 cursor-pointer'>
-        <img className='' src={`/images/logo/${theme}.svg`} alt='CryptoKet' />
-        <span className=''>CryptoKet</span>
-      </div>
-    </Link>
+    <div
+      className='flex gap-1 items-center shrink-0 cursor-pointer'
+      onClick={toggleDarkMode}
+    >
+      <img className='' src={logoSrc} alt='CryptoKet' />
+      <span className=''>CryptoKet</span>
+    </div>
   );
 };

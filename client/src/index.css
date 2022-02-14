@@ -10,11 +10,33 @@
 @tailwind components;
 @tailwind utilities;
 
-.page {
-  background-color: #24252D;
-  color: #fff;
-}
-
 .color-accent { 
   background: linear-gradient(101.12deg, #EB1484 27.35%, #C91CC3 99.99%, #C81CC5 100%, #C81CC5 100%);
+}
+.banner-bg {
+  position:relative;
+  overflow: hidden;
+}
+
+
+.banner-bg::before{
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: -10%;
+  top: -45%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.banner-bg::after{
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: -5%;
+  bottom: -12%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
 }

@@ -5,10 +5,11 @@ import { SocialList } from './SocialList';
 import { Button } from './Button';
 
 export const Footer = () => {
+
   return (
-    <footer className='w-full'>
+    <footer className='w-full dark:text-white'>
       <div
-        className={`p-5 flex justify-between border-solid border-2 border-y-[#2D2E36] border-x-0 flex-wrap gap-[35px] md:flex-nowrap`}
+        className={`p-5 flex justify-between border-solid border-2 border-y-gray-light border-x-0 flex-wrap gap-[35px] md:flex-nowrap dark:border-y-black-1`}
       >
         <div
           className={`flex-col flex gap-5 flex-auto w-full md:flex-none md:w-auto`}
@@ -18,13 +19,14 @@ export const Footer = () => {
           <label htmlFor='' className={`flex `}>
             <input
               type='email'
-              className={`bg-black-2 rounded-lg py-1 px-3 w-4/5 md:w-auto`}
+              className={`border border-solid border-gray-light rounded-lg py-1 px-3 w-4/5 md:w-auto
+              dark:bg-black-2 dark:border-none dark:text-white`}
               placeholder={'Your Email'}
             />
             <Button
               title={'Email Me!'}
               type={'submit'}
-              cName={`rounded-lg bg-red py-2 px-4`}
+              cName={`text-white rounded-lg bg-red py-2 px-4`}
             />
           </label>
         </div>

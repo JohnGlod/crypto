@@ -3,27 +3,33 @@ import { IconTgm } from './IconTgm';
 import { IconTwitter } from './IconTwitter';
 import { IconDiscord } from './IconDiscord';
 
+import { useDarkMode } from '../../hooks/useDarkMode';
+import { useEffect } from 'react';
+
 export const SocialList = () => {
+  const [isDarkMode] = useDarkMode();
+  let colorIcons = isDarkMode ? 'white' : 'black';
+  console.log(isDarkMode);
   return (
     <ul className='flex gap-5 py-4'>
-      <li>
+      <li >
         <a href='#'>
-          <IconInst />
+          <IconInst fill={colorIcons} />
         </a>
       </li>
       <li>
         <a href='#'>
-          <IconTwitter />
+          <IconTwitter fill={colorIcons} />
         </a>
       </li>
       <li>
         <a href='#'>
-          <IconTgm />
+          <IconTgm fill={colorIcons} />
         </a>
       </li>
       <li>
         <a href='#'>
-          <IconDiscord />
+          <IconDiscord fill={colorIcons} />
         </a>
       </li>
     </ul>

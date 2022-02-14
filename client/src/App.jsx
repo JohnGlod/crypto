@@ -7,7 +7,7 @@ import {Home, Item, Profile, CreateItem, NotFound} from './pages';
 
 const App = () => {
   return (
-    <div className='page h-full min-h-max'>
+    <div className='page h-full min-h-max bg-white dark:bg-dark'>
       <Routes>
         <Route path='/' element={<Layout/>}>
           <Route index element={<Home />} />

@@ -6,7 +6,8 @@ export const Card = () => {
     ? 'images/icons/like.svg'
     : 'images/icons/like-active.svg';
   return (
-    <div className='flex flex-col bg-white p-2 rounded-lg text-black-1 dark:bg-dark dark:text-white w-[145px] h-[220px] gap-1'>
+    <div className={`flex flex-col bg-white p-2 rounded-lg text-black-1 w-[145px] h-[220px] gap-1 border-gray-light border-solid border shadow-lg
+    dark:bg-black-3 dark:border-none dark:text-white `}>
       {/* img */}
       <div className='flex-auto bg-gray-light rounded-lg basis-[130px] h-2/4'></div>
       <div className=''>
