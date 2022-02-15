@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 
 export const useDarkMode = () => {
   const isDefaultTheme = window?.matchMedia('(prefers-color-scheme: dark)').matches
-  const [isDarkMode, setDarkMode] = useState(() => isDefaultTheme ||localStorage.theme === 'dark' )
+  const [isDarkMode, setDarkMode] = useState(() => isDefaultTheme && localStorage.theme === 'dark' )
 
   const toggleDarkMode = () => {
     setDarkMode(!isDarkMode)

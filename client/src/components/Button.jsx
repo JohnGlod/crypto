@@ -39,14 +39,20 @@ const SIZE = [
 };
  */
 
-export const Button = ({type, cName = '', url, title}) => {
+export const Button = ({ type, cName = '', url, title }) => {
   return type === 'submit' ? (
-    <button type={type} className={cName}>
+    <button
+      type={type}
+      className={`rounded-lg hover:opacity-80 duration-500 py-2 px-5 ${cName}`}
+    >
       {title}
     </button>
   ) : (
-    <button type='button' className={`rounded-lg hover:opacity-80 duration-500 py-2 px-5 ${cName}`}>
+    <button
+      type='button'
+      className={`rounded-lg hover:opacity-80 duration-500 py-2 px-5 ${cName}`}
+    >
       <NavLink to={url}>{title}</NavLink>
     </button>
   );
-}
+};

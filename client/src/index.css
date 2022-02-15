@@ -5,7 +5,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -39,4 +38,9 @@
   bottom: -12%;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
+}
+
+
+textarea {
+  resize: none;
 }
