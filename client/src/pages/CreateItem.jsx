@@ -1,41 +1,17 @@
 import { Button } from '../components/Button';
-
+import { DragDropFile } from '../components/DragDropFile';
 export const CreateItem = () => {
-  const maxSizeFiles = 1e8;
   return (
-    <section className='w-full p-8'>
+    <section className='w-full p-8 dark:text-white max-w-screen-md mx-auto sm:px-6 lg:px-8'>
       <form action='#' className=''>
-        <fieldset className='flex flex-col gap-[55px] mb-[50px]'>
-          <legend className='font-bold hidden md:block'>Create new Item</legend>
-          <div>
-            <label className='font-bold flex flex-col text-xl mb-[20px] relative'>
-              Upload File
-              <input
-                type='file'
-                accept='.png, .jpg, .jpeg, .gif, .svg, .webm, .mp3, .mp4'
-                size={maxSizeFiles}
-                className={'absolute opacity-0 top-6 left-0 bg-red w-full h-[300px] cursor-pointer '}
-              />
-            </label>
-            <div className='border-dashed border-2 border-gray-light flex flex-col font-bold items-center p-6 rounded-lg items-center text-sm '>
-              <span className='w-2/4'>JPG, PNG, GIF, SVG, WEBM, MP3, MP4. Max 100mb.</span>
-              <img
-                className='w-[137px] h-[137px]'
-                src='/images/icons/image.svg'
-                alt='Upload File'
-              />
-              <div className='flex flex-col items-center'>
-                Drag and Drop File
-                <br />
-                <span className='font-normal'>on</span> browse media on your
-                device
-              </div>
-            </div>
-          </div>
+        <fieldset className='flex flex-col gap-[55px] mb-[50px] '>
+          <legend className='font-bold hidden md:block md:text-3xl md:font-semibold mb-10'>Create new Item</legend>
+          <DragDropFile />
           <div className='w-full flex flex-col justify-between'>
             <label className='font-bold mb-[20px] text-xl'>Name</label>
             <input
-              className='w-full py-5 outline-none border border-solid border-gray-light rounded-lg px-5 focus:border-dark hover:border-dark'
+              className={`w-full py-5 outline-none border border-solid border-gray-light rounded-lg px-5 focus:border-dark hover:border-dark 
+              dark:text-white dark:bg-black-1 dark:focus:border-white dark:border-black-1 `}
               type='text'
               placeholder='Item Name'
             />
@@ -47,7 +23,8 @@ export const CreateItem = () => {
             <textarea
               id='description'
               name='descr'
-              className='border border-solid border-gray-light rounded-lg px-5 focus:border-dark hover:border-dark w-full py-5 outline-none'
+              className={`border border-solid border-gray-light rounded-lg px-5 focus:border-dark hover:border-dark w-full py-5 outline-none 
+              dark:text-white dark:bg-black-1 dark:focus:border-white dark:border-black-1 `}
               type='text'
               cols={33}
               rows={5}
@@ -58,11 +35,14 @@ export const CreateItem = () => {
             <label for='price' className='font-bold mb-[20px] text-xl'>
               Price
             </label>
-            <div className='flex items-center border border-solid border-gray-light rounded-lg px-5 focus:border-dark hover:border-dark'>
+            <div
+              className={`flex items-center border border-solid border-gray-light rounded-lg p-5 focus:border-dark hover:border-dark 
+              dark:text-white dark:bg-black-1 dark:border-dark dark:hover:border-white dark:focus:border-white`}
+            >
               <input
                 id='price'
                 name='price'
-                className='w-full py-5 outline-none'
+                className='w-full outline-none dark:bg-black-1 '
                 type='number'
                 placeholder='Enter Price'
                 step={0.001}
