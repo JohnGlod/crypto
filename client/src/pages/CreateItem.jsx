@@ -1,5 +1,5 @@
 import { Button } from '../components/Button';
-import { DragDropFile } from '../components/DragDropFile';
+import { DragDropFile } from '../components';
 export const CreateItem = () => {
   return (
     <section className='w-full p-8 dark:text-white max-w-screen-md mx-auto sm:px-6 lg:px-8'>

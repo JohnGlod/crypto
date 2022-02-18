@@ -1,4 +1,4 @@
-import { Card } from '../components';
+import { CardItem } from '../components';
 export const Home = () => {
   return (
     <main className='w-full p-5 flex flex-col gap-5 items-center'>
@@ -9,8 +9,8 @@ export const Home = () => {
         </h1>
       </div>
       <div className='flex md:justify-evenly gap-5'>
-        <Card />
-        <Card />
+        <CardItem />
+        <CardItem />
       </div>
     </main>
   );

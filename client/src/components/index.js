@@ -1,4 +1,4 @@
-import { Card } from "./CardItem";
+import { CardItem } from "./CardItem";
 import { Layout } from "./Layout";
-
-export {Layout, Card}
+import { DragDropFile } from "./DragDropFile";
+export {Layout, CardItem, DragDropFile}

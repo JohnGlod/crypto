@@ -3,7 +3,7 @@ import { ReactComponent as FileLogo } from './../assets/icons/Image.svg';
 import { GrCheckmark } from 'react-icons/gr';
 
 export const DragDropFile = () => {
-  const maxSizeFiles = 1e8;
+  const maxSizeFile = 1e8;
   const [media, setMedia] = useState([]);
   const [dragging, setDragging] = useState(false);
 
@@ -79,7 +79,7 @@ export const DragDropFile = () => {
         <input
           type='file'
           accept='.png, .jpg, .jpeg, .gif, .svg, .webm, .mp3, .mp4'
-          size={maxSizeFiles}
+          size={maxSizeFile}
           className={`sr-only`}
         />
       </label>

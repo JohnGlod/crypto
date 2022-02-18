@@ -1,15 +1,14 @@
+import { ReactComponent as Icons } from '../assets/icons/Logo.svg';
 import { useDarkMode } from '../hooks/useDarkMode';
+
 export const Logo = () => {
-  const [isDarkMode, toggleDarkMode] = useDarkMode();
-  const logoSrc = isDarkMode
-    ? 'images/logo/Dark.svg'
-    : '/images/logo/Light.svg';
+  const [_, toggleDarkMode] = useDarkMode();
   return (
     <div
       className='flex gap-1 items-center shrink-0 cursor-pointer'
       onClick={toggleDarkMode}
     >
-      <img className='' src={logoSrc} alt='CryptoKet' />
+      <Icons className={`stroke-white dark:stroke-dark`} />
       <span className=''>CryptoKet</span>
     </div>
   );
