@@ -1,16 +1,32 @@
 import { Button } from '../components/Button';
 import { DragDropFile } from '../components';
+import { useState } from 'react';
 export const CreateItem = () => {
+  const [file, setFile] = useState(null);
+
   return (
     <section className='w-full p-8 dark:text-white max-w-screen-md mx-auto sm:px-6 lg:px-8'>
       <form action='#' className=''>
         <fieldset className='flex flex-col gap-[55px] mb-[50px] '>
-          <legend className='font-bold hidden md:block md:text-3xl md:font-semibold mb-10'>Create new Item</legend>
-          <DragDropFile />
+          <legend className='font-bold hidden md:block md:text-3xl md:font-semibold mb-10'>
+            Create new Item
+          </legend>
+          <DragDropFile setFile={setFile} />
+          {file && (
+            <div className='w-full p-5 outline-none border border-solid border-gray-light rounded-lg font-semibold'>
+              File name: {file?.name}
+              <img
+                src={file.preview}
+                alt='preview'
+                className='w-[300px] h-[300px]'
+              />
+            </div>
+            
+          )}
           <div className='w-full flex flex-col justify-between'>
-            <label className='font-bold mb-[20px] text-xl'>Name</label>
+            <label className='font-bold mb-5 text-xl'>Name</label>
             <input
-              className={`w-full py-5 outline-none border border-solid border-gray-light rounded-lg px-5 focus:border-dark hover:border-dark 
+              className={`w-full p-5 outline-none border border-solid border-gray-light rounded-lg focus:border-dark hover:border-dark 
               dark:text-white dark:bg-black-1 dark:focus:border-white dark:border-black-1 `}
               type='text'
               placeholder='Item Name'
