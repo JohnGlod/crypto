@@ -18,11 +18,11 @@ export const CreateItem = () => {
 
   const onSubmit = (data) => {
     if (!file) {
-      return
+      return;
     }
-    console.log({...data, file}, 'onSubmit data');
+    console.log({ ...data, file }, 'onSubmit data');
     reset();
-    setFile(null)
+    setFile(null);
   };
 
   return (
@@ -34,13 +34,22 @@ export const CreateItem = () => {
           </legend>
           <DragDropFile setFile={setFile} />
           {file && (
-            <div className='w-full p-5 outline-none border border-solid border-gray-light rounded-lg font-semibold'>
-              File name: {file?.name}
-              <img
-                src={file.preview}
-                alt='preview'
-                className='w-[300px] h-[300px]'
-              />
+            <div className='w-full p-5 outline-none border border-solid border-gray-light rounded-lg font-semibold text-center'>
+              File name: <span className='font-normal'>{file?.name} </span>
+              <div className='flex items-center justify-center p-4 '>
+                {file.type.substr(0, 5) === 'image' ? (
+                  <img
+                    src={file.preview}
+                    alt='preview'
+                    className='w-fit h-fit rounded-lg'
+                  />
+                ) : (
+                  <video width='480' controls poster={file.preview}>
+                    <source src={file.preview} type={file.type} />
+                    Your browser doesn't support HTML5 video tag.
+                  </video>
+                )}
+              </div>
             </div>
           )}
           <div className='w-full flex flex-col justify-between'>
@@ -48,7 +57,7 @@ export const CreateItem = () => {
               Name
               <input
                 className={`w-full mt-5 p-5 outline-none border border-solid border-gray-light rounded-lg focus:border-dark hover:border-dark text-base border-gray-light
-                dark:border-dark dark:text-white dark:bg-black-1 dark:focus:border-white `}
+                dark:border-dark dark:text-white dark:bg-black-1 dark:focus:border-white`}
                 type='text'
                 placeholder='Item Name'
                 {...register('itemName', {

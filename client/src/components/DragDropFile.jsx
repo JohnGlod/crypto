@@ -10,10 +10,11 @@ export const DragDropFile = ({ setFile = Function.prototype }) => {
     const file = Object.assign(acceptedFiles[0], {
       preview: URL.createObjectURL(acceptedFiles[0]),
     });
+    console.log(file)
     setFile(file);
   }, []);
 
-  const { getRootProps, getInputProps, isDragAccept, isDragReject } =
+  const { getRootProps, getInputProps, isDragReject } =
     useDropzone({
       onDrop,
       multiple: false,
@@ -40,7 +41,7 @@ export const DragDropFile = ({ setFile = Function.prototype }) => {
       <label className='font-bold flex flex-col text-xl'>Upload File</label>
       <div
         {...getRootProps()}
-        className={`border-dashed border-2 font-bold items-center p-6 rounded-lg text-sm hover:opacity-60 cursor-pointer dark:bg-black-1
+        className={`border-dashed border-2 font-bold items-center p-6 rounded-lg text-sm hover:opacity-60 cursor-pointer dark:bg-black-1 
         ${isDragReject ? 'border-[#DC2626]' : 'border-gray-light'}`}
       >
         <input {...getInputProps()} />
