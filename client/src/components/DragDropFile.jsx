@@ -40,12 +40,12 @@ export const DragDropFile = ({ setFile = Function.prototype }) => {
       <label className='font-bold flex flex-col text-xl'>Upload File</label>
       <div
         {...getRootProps()}
-        className={`border-dashed border-2 font-bold items-center p-6 rounded-lg text-sm hover:opacity-60 cursor-pointer 
-        ${isDragReject ? 'border-red' : 'border-gray-light'}`}
+        className={`border-dashed border-2 font-bold items-center p-6 rounded-lg text-sm hover:opacity-60 cursor-pointer dark:bg-black-1
+        ${isDragReject ? 'border-[#DC2626]' : 'border-gray-light'}`}
       >
         <input {...getInputProps()} />
         {isDragReject ? (
-          <div className='text-center'>
+          <div className='text-center text-[#DC2626] font-normal'>
             Oops! This app only supports JPG, PNG, GIF, SVG, WEBM, MP3, MP4. Max
             100mb.
           </div>

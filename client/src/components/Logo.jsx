@@ -5,7 +5,7 @@ export const Logo = () => {
   const [_, toggleDarkMode] = useDarkMode();
   return (
     <div
-      className='flex gap-1 items-center shrink-0 cursor-pointer'
+      className='flex gap-1 items-center shrink-0 cursor-pointer max-w-fit'
       onClick={toggleDarkMode}
     >
       <Icons className={`stroke-white dark:stroke-dark`} />
