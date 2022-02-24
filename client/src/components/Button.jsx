@@ -39,7 +39,7 @@ const SIZE = [
 };
  */
 
-export const Button = ({ type, cName = '', url, title }) => {
+export const Button = ({ type, cName = '', url, title,}) => {
   return type === 'submit' ? (
     <button
       type={type}

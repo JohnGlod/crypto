@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useMoralis } from 'react-moralis';
+import { useDispatch } from 'react-redux';
+
 import { HiMenu } from 'react-icons/hi';
 import { AiOutlineClose } from 'react-icons/ai';
+
+import { connectWallet } from '../store/authSlice';
 
 import { Button } from './Button';
 
@@ -29,7 +34,9 @@ const NavList = [
 ];
 
 export const Navbar = () => {
+  const dispatch = useDispatch();
   const [toggleMenu, setToggleMenu] = useState(false);
+  const { isAuthenticated, authenticate, logout } = useMoralis();
   return (
     <>
       <div className='relative'>
@@ -67,12 +74,14 @@ export const Navbar = () => {
             title={'Create'}
             cName={'color-accent lg:ml-4 text-white'}
           />
-          <Button
-            type={'button'}
-            url={'/login'}
-            title={'Connect'}
-            cName={'border border-red text-red lg:ml-[20px]'}
-          />
+          <button
+            className='rounded-lg hover:opacity-80 duration-500 py-2 px-5 border border-red text-red lg:ml-[20px]'
+            onClick={!isAuthenticated ? () => authenticate({
+              signingMessage: 'Your signature is required for authorization.'
+            }) : () => logout()}
+          >
+            {!isAuthenticated ? 'Connect' : 'Disconnect'}
+          </button>
         </div>
       </nav>
     </>

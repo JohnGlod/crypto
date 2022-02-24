@@ -4,7 +4,7 @@ export const fetchItems = createAsyncThunk(
   'items/fetchItems',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetch('');
+      const response = await fetch('https://6214f77ccdb9d09717a81dff.mockapi.io/items');
       if (!response.ok) {
         throw new Error('Server Error!');
       }

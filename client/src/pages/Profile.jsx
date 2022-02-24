@@ -1,5 +1,8 @@
+import { useMoralis } from "react-moralis";
+
 export const Profile = () => {
+  const {user} = useMoralis()
   return <>
-  Profile
+  Profile {user.getUsername()}
   </>
 };

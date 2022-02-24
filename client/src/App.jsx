@@ -1,3 +1,4 @@
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { Layout } from './components';
@@ -10,7 +11,14 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path='profile' element={<Profile />} />
+          <Route
+            path='profile'
+            element={
+              <RequireAuth>
+                <Profile />
+              </RequireAuth>
+            }
+          />
           <Route path='items/:id' element={<Item />} />
           <Route
             path='items/new'
