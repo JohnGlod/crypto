@@ -8,7 +8,8 @@ export const CardItem = (props) => {
     props;
   return (
     <div
-      className={`flex flex-col bg-white p-2 rounded-lg text-black-1 w-[145px] h-[220px] md:w-[230px] md:h-[320px] gap-1 border-gray-light border-solid border shadow-lg
+      className={`flex flex-col bg-white p-2 rounded-lg text-black-1 w-[145px] h-[220px] 
+      lg:w-[230px] lg:h-[320px] gap-1 border-gray-light border-solid border shadow-lg
     dark:bg-black-3 dark:border-none dark:text-white `}
     >
       <img
