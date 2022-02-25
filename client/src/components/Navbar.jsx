@@ -1,13 +1,9 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useMoralis } from 'react-moralis';
-import { useDispatch } from 'react-redux';
 
 import { HiMenu } from 'react-icons/hi';
 import { AiOutlineClose } from 'react-icons/ai';
-
-import { connectWallet } from '../store/authSlice';
-
 import { Button } from './Button';
 
 const NavbarItem = ({ title, classProps = '', url }) => {
@@ -30,11 +26,10 @@ const NavbarItem = ({ title, classProps = '', url }) => {
 const NavList = [
   { title: 'Explore', url: '/' },
   { title: 'My Items', url: '/profile' },
-  { title: 'Following', url: '/followers' },
+  { title: 'Following', url: '/following' },
 ];
 
 export const Navbar = () => {
-  const dispatch = useDispatch();
   const [toggleMenu, setToggleMenu] = useState(false);
   const { isAuthenticated, authenticate, logout } = useMoralis();
   return (

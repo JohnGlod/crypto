@@ -9,7 +9,7 @@ export const Select = () => {
     >
       <option value='listed'>Recently Listed</option>
       <option value='visited' selected>
-      Most Visited
+        Most Visited
       </option>
     </select>
   );

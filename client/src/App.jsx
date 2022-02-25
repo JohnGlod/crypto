@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { Layout } from './components';
-import { Home, Item, Profile, CreateItem, NotFound } from './pages';
+import { Home, Item, Profile, CreateItem, NotFound, Following} from './pages';
 import { RequireAuth } from './hoc/RequireAuth';
 
 const App = () => {
@@ -19,7 +19,14 @@ const App = () => {
               </RequireAuth>
             }
           />
-          <Route path='items/:id' element={<Item />} />
+          <Route
+            path='following'
+            element={
+              <RequireAuth>
+                <Following />
+              </RequireAuth>
+            }
+          />
           <Route
             path='items/new'
             element={
@@ -28,6 +35,7 @@ const App = () => {
               </RequireAuth>
             }
           />
+          <Route path='items/:id' element={<Item />} />
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>
