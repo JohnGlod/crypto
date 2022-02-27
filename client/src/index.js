@@ -1,29 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import { MoralisProvider } from 'react-moralis';
+
 import reportWebVitals from './reportWebVitals';
 
 import './index.css';
-import App from './App';
 import store from './store';
-
-const appId = process.env.REACT_APP_APPID
-const serverUrl = process.env.REACT_APP_SERVER_URL
+import { Root } from './Root';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <MoralisProvider
-        appId={appId}
-        serverUrl={serverUrl}
-      >
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </MoralisProvider>
-    </BrowserRouter>
+    <Root store={store}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

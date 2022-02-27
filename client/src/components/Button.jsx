@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const STYLES = [
   {
@@ -39,7 +39,7 @@ const SIZE = [
 };
  */
 
-export const Button = ({ type, cName = '', url, title,}) => {
+export const Button = ({ type, cName = '', url, title, func}) => {
   return type === 'submit' ? (
     <button
       type={type}
@@ -51,8 +51,9 @@ export const Button = ({ type, cName = '', url, title,}) => {
     <button
       type='button'
       className={`rounded-lg hover:opacity-80 duration-500 py-2 px-5 ${cName}`}
+      onClick={func}
     >
-      <NavLink to={url}>{title}</NavLink>
+      <Link to={url}>{title}</Link>
     </button>
   );
 };

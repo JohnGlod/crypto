@@ -1,33 +1,28 @@
-import React, { useState } from 'react';
-import { BsPencil } from 'react-icons/bs';
 
-export const UserProfile = ({ user, testSrc }) => {
-  const [changeName, setChangeName] = useState(false);
+export const UserProfile = ({ user, testSrc, bannerSrc }) => {
   return (
-    <div className='flex flex-col items-center'>
-      <div className='rounded-full border-4 border-dark w-56 h-56 '>
-        <img
-          className='w-full h-full rounded-full object-cover object-center'
-          src={testSrc}
-          alt='profile'
-        />
-      </div>
-      {!changeName ? (
-        <h2 className='font-semibold text-center text-xl flex gap-5 items-center'>
-          <span className=''>{user.getUsername()}</span>
-          <BsPencil
-            className='cursor-pointer'
-            onClick={(e) => {
-              setChangeName(prev => !prev)
-              console.log(e.target)}
-            }
+    <div className='pt-5 relative mb-20 flex flex-col items-center'>
+      <img
+        className='w-full lg:h-[300px] object-cover object-center h-[200px] '
+        src={
+          bannerSrc
+            ? bannerSrc
+            : 'https://img.freepik.com/free-vector/neon-lights-background-theme_52683-44625.jpg?size=626&ext=jpg'
+        }
+        alt='banner'
+      />
+      <div className={`absolute top-2/4 left-2/4 -translate-x-2/4 `}>
+        <div className='rounded-full border-4 border-dark w-32 h-32 lg:w-56 lg:h-56'>
+          <img
+            className={`w-full h-full rounded-full object-cover object-center`}
+            src={testSrc}
+            alt='profile'
           />
-        </h2>
-      ) : (
-        <form>
-          <input type='text' placeholder=''/>
-        </form>
-      )}
+        </div>
+      </div>
+      <h2 className='relative top-14 lg:top-24 font-semibold text-center text-xl flex gap-5 items-center '>
+        <span className=''>{user.getUsername()}</span>
+      </h2>
     </div>
   );
 };
