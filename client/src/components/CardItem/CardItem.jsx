@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { ReactComponent as Like } from '../assets/icons/like.svg';
-import { ReactComponent as ActiveLike } from '../assets/icons/like-active.svg';
+import { ReactComponent as Like } from '../../assets/icons/like.svg';
+import { ReactComponent as ActiveLike } from '../../assets/icons/like-active.svg';
 
 export const CardItem = (props) => {
   const [liked, setLiked] = useState(true);

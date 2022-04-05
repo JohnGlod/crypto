@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 
 import { RequireAuth } from '../../hoc/RequireAuth';
-import { Layout } from '../../components';
+import { Layout } from '../Layout';
 import {
   Home,
   Item,

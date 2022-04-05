@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardItem } from './CardItem';
+import { CardItem } from '../../components/CardItem';
 
 export const GridContainer = ({ NFTBalance, fetchSuccess}) => {
   return (

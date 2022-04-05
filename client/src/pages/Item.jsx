@@ -1,5 +1,5 @@
 import { Avatar } from '../components/Avatar';
-import { CustomContainer } from '../containers/CustomContainer/CustomContainer';
+import { CustomContainer } from '../containers/CustomContainer';
 
 export const Item = ({ itemName, itemPrice = '4.5' }) => {
   return (

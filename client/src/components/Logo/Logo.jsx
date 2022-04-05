@@ -1,5 +1,5 @@
-import { ReactComponent as Icons } from '../assets/icons/Logo.svg';
-import { useDarkMode } from '../hooks/useDarkMode';
+import { ReactComponent as Icons } from '../../assets/icons/Logo.svg';
+import { useDarkMode } from '../../hooks/useDarkMode';
 
 export const Logo = () => {
   const [_, toggleDarkMode] = useDarkMode();

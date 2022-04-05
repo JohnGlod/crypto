@@ -1,8 +1,7 @@
 import {  useCallback } from 'react';
-
 import { useDropzone } from 'react-dropzone';
 
-import { ReactComponent as FileLogo } from './../assets/icons/Image.svg';
+import { ReactComponent as FileLogo } from '../../assets/icons/Image.svg';
 
 export const DragDropFile = ({ setFile = Function.prototype }) => {
   const maxSizeFile = 1e8;

@@ -1,6 +1,8 @@
 import React from 'react'
-import { CustomContainer, Transactions } from '../components'
 import { useMoralis } from 'react-moralis';
+
+import { CustomContainer} from '../containers/CustomContainer'
+import { Transactions} from '../components/Transactions'
 
 export const Following = () => {
   const { user } = useMoralis();

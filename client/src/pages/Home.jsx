@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { GridContainer, Popup } from '../components';
+import { GridContainer} from '../containers/GridContainer';
 import { useIPFS } from '../hooks/useIPFS';
 import { useMoralisWeb3Api } from 'react-moralis';
 import { getNFTCollections } from '../store/redusers/selectors/getNFTCollections/getNFTCollections';
