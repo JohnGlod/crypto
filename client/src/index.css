@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 @tailwind base;
@@ -10,13 +10,7 @@
 @tailwind utilities;
 
 .color-accent {
-  background: linear-gradient(
-    101.12deg,
-    #eb1484 27.35%,
-    #c91cc3 99.99%,
-    #c81cc5 100%,
-    #c81cc5 100%
-  );
+  background: linear-gradient(101.12deg, #eb1484 27.35%, #c91cc3 99.99%, #c81cc5 100%, #c81cc5 100%);
 }
 .banner-bg {
   position: relative;
@@ -24,7 +18,7 @@
 }
 
 .banner-bg::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 100px;
   height: 100px;
@@ -35,7 +29,7 @@
 }
 
 .banner-bg::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100px;
   height: 100px;
@@ -57,7 +51,7 @@ textarea {
 }
 .arrow:before,
 .arrow:after {
-  content: '';
+  content: "";
   position: absolute;
   box-sizing: border-box;
   width: 100%;
@@ -85,5 +79,43 @@ textarea {
   100% {
     opacity: 0;
     transform: translate(0, 53px) rotate(-45deg);
+  }
+}
+
+.icons-popup {
+  position: relative;
+}
+/* .icons-popup:hover::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: #ffffff;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+ */
+.icons-popup:hover:after {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .icons-popup:hover:after {
+    display: block;
+    right: 50%;
+    content: attr(data-content);
+    position: absolute;
+    top: 2rem;
+    height: auto;
+    width: max-content;
+    font-size: 12px;
+    z-index: 2;
+    padding: 0.5rem 1rem;
+    background-color: #000;
+    transition: all ease-in-out 0.8s;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
   }
 }

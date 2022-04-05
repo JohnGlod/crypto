@@ -1,0 +1,1 @@
+export const getNFTCollections = (state) => state.items.items

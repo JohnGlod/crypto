@@ -1,14 +1,13 @@
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { MoralisProvider } from 'react-moralis';
-import App from './App';
 
-const appId = process.env.REACT_APP_APPID;
-const serverUrl = process.env.REACT_APP_SERVER_URL;
+import {APP_ID, SERVER_URL} from './constants/project'
+import App from './containers/App';
 
 export const Root = ({ store }) => (
   <BrowserRouter>
-    <MoralisProvider appId={appId} serverUrl={serverUrl}>
+    <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
       <Provider store={store}>
         <App />
       </Provider>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { CustomContainer, NFT, Transactions } from '../components'
+import { CustomContainer, Transactions } from '../components'
 import { useMoralis } from 'react-moralis';
 
 export const Following = () => {
@@ -7,7 +7,6 @@ export const Following = () => {
   return (
     <CustomContainer>
       <Transactions user={user} />
-      <NFT user={user} />
     </CustomContainer>
   )
 }

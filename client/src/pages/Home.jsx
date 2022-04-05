@@ -1,15 +1,49 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { GridContainer } from '../components';
+import { GridContainer, Popup } from '../components';
+import { useIPFS } from '../hooks/useIPFS';
+import { useMoralisWeb3Api } from 'react-moralis';
+import { getNFTCollections } from '../store/redusers/selectors/getNFTCollections/getNFTCollections';
 
-import { fetchItems } from '../store/itemsSlice';
 export const Home = () => {
-  const dispatch = useDispatch();
-  const items = useSelector((state) => state.items.items);
+  /*   const dispatch = useDispatch();
+  const items = useSelector(getNFTCollections); 
+  */
+  const { resolveLink } = useIPFS();
 
+  const [fetchSuccess, setFetchSuccess] = useState(false);
+  const [NFTBalance, setNFTBalance] = useState([]);
+  const Web3Api = useMoralisWeb3Api();
+
+
+  const fetchSearchNFTs = async (options) => {
+    try {
+      const data = await Web3Api.token.searchNFTs(options);
+      if (data?.result) {
+        const NFTs = data.result;
+        /* console.log(NFTs);  При некорректном запросе возвращает именно [] */
+        setFetchSuccess(true);
+        for (const NFT of NFTs) {
+          if (NFT?.metadata) {
+            NFT.metadata = JSON.parse(NFT.metadata);
+            NFT.metadata.image = resolveLink(NFT.metadata?.image) ?? resolveLink(NFT.metadata?.image_url);
+          }
+        }
+        setNFTBalance(NFTs);
+        return NFTs;
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
   useEffect(() => {
-    dispatch(fetchItems());
+    fetchSearchNFTs({
+      q: 'Lover',
+      filter: 'name',
+      limit: 20,
+      offset: 1000,
+    });
   }, []);
 
   return (
@@ -23,9 +57,12 @@ export const Home = () => {
         </h1>
       </div>
       <section className='pb-10'>
-        <h2 className='font-semibold text-3xl mb-8 dark:text-white'>Hot Bids</h2>
-        <GridContainer items={items} />
+        <h2 className='font-semibold text-3xl mb-8 dark:text-white'>
+          Hot Bids
+        </h2>
+        <GridContainer NFTBalance={NFTBalance} fetchSuccess={fetchSuccess} />
       </section>
+      {/* <Popup /> */}
     </main>
   );
 };
