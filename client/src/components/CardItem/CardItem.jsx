@@ -1,9 +1,6 @@
-import { useState } from 'react';
-import { ReactComponent as Like } from '../../assets/icons/like.svg';
-import { ReactComponent as ActiveLike } from '../../assets/icons/like-active.svg';
+import { Like } from '../Like';
 
 export const CardItem = (props) => {
-  const [liked, setLiked] = useState(true);
   const { itemName, itemId, itemSrc, itemDescr, itemPrice, numberOfLikes } =
     props;
   return (
@@ -23,14 +20,7 @@ export const CardItem = (props) => {
           <div>
             <span className='font-semibold'>{itemPrice}</span> ETH
           </div>
-          <div className='flex items-center gap-[5px]'>
-            {liked ? (
-              <ActiveLike className={`w-[12px] h-[12px]`} />
-            ) : (
-              <Like className={`w-[12px] h-[12px]`} />
-            )}
-            <span>{numberOfLikes}</span>
-          </div>
+          <Like numberOfLikes={15} />
         </div>
       </div>
     </div>

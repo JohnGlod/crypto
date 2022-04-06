@@ -47,7 +47,7 @@ export const Profile = () => {
   return (
     <section className='dark:text-white '>
       <UserProfile user={user} testSrc={testSrc} bannerSrc={bannerSrc} />
-      <CustomContainer>
+      <CustomContainer style='flex-col items-center'>
         <div className='hidden px-4 max-w-screen-lg w-full md:flex md:mt-10 justify-between gap-5'>
           <Search />
           <Select />

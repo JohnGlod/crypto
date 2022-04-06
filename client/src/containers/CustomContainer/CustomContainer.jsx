@@ -1,8 +1,6 @@
-import React from 'react';
-
-export const CustomContainer = ({ children }) => {
+export const CustomContainer = ({ style = '' ,children }) => {
   return (
-    <div className='w-full p-5 flex flex-col gap-5 items-center max-w-screen-2xl mx-auto dark:text-white'>
+    <div className={`w-full p-5 flex gap-5 max-w-screen-2xl mx-auto dark:text-white min-h-fit ${style}`}>
       {children}
     </div>
   );

@@ -1,5 +1,8 @@
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ['./src/**/*.{html,js,jsx}', './node_modules/tw-elements/dist/js/**/*.js'],
+  plugins: [
+    require('tw-elements/dist/plugin')
+  ],
   darkMode: 'class',
   theme: {
     colors: {
@@ -15,5 +18,4 @@ module.exports = {
       'black-4': '#24252D',
     },
   },
-  plugins: [],
 }
