@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useMoralis } from 'react-moralis';
 import { HiMenu } from 'react-icons/hi';
 import { AiOutlineClose } from 'react-icons/ai';
-
+import { Link } from 'react-router-dom';
 import { Button } from '../Button';
 
 const NavbarItem = ({ title, classProps = '', url, closeMenu }) => {
@@ -72,15 +72,12 @@ export const Navbar = () => {
           ))}
         </ul>
         <div className='justify-center flex gap-4 border-solid border-t border-gray-light dark:border-black-1 pt-4 lg:gap-0 lg:justify-start lg:p-0 lg:border-none'>
+          <Button cName='color-accent lg:ml-4 text-white'>
+            <Link to='/items/new'>Create</Link>
+          </Button>
           <Button
-            type={'button'}
-            url={'/items/new'}
-            title={'Create'}
-            cName={'color-accent lg:ml-4 text-white'}
-          />
-          <button
-            className='rounded-lg hover:opacity-80 duration-500 py-2 px-5 border border-red text-red lg:ml-[20px]'
-            onClick={
+            cName='border border-red text-red lg:ml-[20px] font-semibold'
+            func={
               !isAuthenticated
                 ? () =>
                     authenticate({
@@ -91,7 +88,7 @@ export const Navbar = () => {
             }
           >
             {!isAuthenticated ? 'Connect' : 'Disconnect'}
-          </button>
+          </Button>
         </div>
       </nav>
     </>

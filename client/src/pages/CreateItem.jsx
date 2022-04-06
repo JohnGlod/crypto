@@ -125,11 +125,12 @@ export const CreateItem = () => {
           </div>
         </fieldset>
         <Button
-          type={'submit'}
-          cName={`color-accent text-white`}
-          title={'Create Item'}
+          type='submit'
+          cName='color-accent text-white'
           disabled={!isValid}
-        />
+        >
+          Create Item
+        </Button>
       </form>
     </section>
   );

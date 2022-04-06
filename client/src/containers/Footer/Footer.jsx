@@ -23,11 +23,7 @@ export const Footer = () => {
               dark:bg-black-2 dark:border-none dark:text-white`}
                 placeholder={'Your Email'}
               />
-              <Button
-                title={'Email Me!'}
-                type={'submit'}
-                cName={`text-white rounded-lg bg-red py-2 px-4`}
-              />
+              <Button type='submit' cName='text-white rounded-lg bg-red py-2 px-4'>Email Me!</Button>
             </label>
           </div>
           <div className=''>

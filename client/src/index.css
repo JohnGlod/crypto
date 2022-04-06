@@ -124,5 +124,5 @@ textarea {
 .nav-tabs .nav-link.active {
   color: #DA18A3;
   font-weight: 600;
-  border-color: #DA18A3;
+  border-bottom: 2px solid #DA18A3; 
 }

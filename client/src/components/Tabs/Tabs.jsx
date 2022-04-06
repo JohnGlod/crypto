@@ -5,19 +5,17 @@ export const Tabs = () => {
   w-full
   block
   font-normal
-  text-base
-  text-dark dark:text-white 
+  text-base 
+  text-dark dark:text-white hover:text-black
   leading-tight
-  px-6 py-3
-  my-2
-  border-b-2 border-gray-light border-current  
-  hover:border-current  hover:bg-gray-100
-  focus:border-current `;
+  px-6 py-3 
+  focus:outline-none 
+`;
 
   return (
     <>
       <ul
-        className='nav nav-tabs flex flex-row flex-wrap list-none border-b-0 pl-0 mb-4'
+        className='nav nav-tabs flex w-full flex-row flex-wrap list-none border-b-2 border-gray-light pl-0 mb-4'
         id='tabs-tab3'
         role='tablist'
       >

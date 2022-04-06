@@ -1,59 +1,28 @@
-import { Link } from 'react-router-dom';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const STYLES = [
-  {
-    type: 'btn--primary',
-    style: 'color-accent rounded-lg hover:mb-0.5 hover:opacity-80',
-  },
-  {
-    type: 'btn--outline',
-    style:
-      'rounded-lg text-red border  border-red  hover:mb-0.5 hover:opacity-80',
-  },
-];
-
-const SIZE = [
-  {
-    type: 'btn--medium',
-    style: 'py-2 px-5',
-  },
-  {
-    type: 'btn--large',
-    style: 'py-2 px-10 ',
-  },
-];
-
-/* export const Button = (props) => {
-  const { children, title, path, type, cName, buttonStyle } = props;
-  const checkButtonStyle = STYLES.filter((item) => item.type === buttonStyle); // STYLES.type[buttonStyle]
-
-  return type === 'submit' ? (
-    <button type={type} className={cName}>
-      {title}
-    </button>
-  ) : (
-    <button type='button' className={cName}>
-      <NavLink to={path}>{title}</NavLink>
+export const Button = ({
+  children,
+  cName = '',
+  func = Function.prototype,
+  type = 'button',
+}) => {
+  return (
+    <button
+      type={type}
+      className={`
+      ${cName} hover:shadow-md hover:shadow-red focus:shadow-red focus:shadow-md focus:outline-none focus:ring-0 active:shadow-md 
+      transition duration-150 ease-in-out rounded-lg py-2 px-5 `}
+      onClick={func}
+    >
+      {children}
     </button>
   );
 };
- */
 
-export const Button = ({ type, cName = '', url, title, func}) => {
-  return type === 'submit' ? (
-    <button
-      type={type}
-      className={`rounded-lg hover:opacity-80 duration-500 py-2 px-5 ${cName}`}
-    >
-      {title}
-    </button>
-  ) : (
-    <button
-      type='button'
-      className={`rounded-lg hover:opacity-80 duration-500 py-2 px-5 ${cName}`}
-      onClick={func}
-    >
-      <Link to={url}>{title}</Link>
-    </button>
-  );
+Button.propTypes = {
+  children: PropTypes.any, //PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  func: PropTypes.func,
+  cName: PropTypes.string,
+  type: PropTypes.string,
 };
