@@ -4,6 +4,33 @@ import { Logo } from '../../components/Logo';
 import { SocialList } from '../../components/SocialList';
 import { Button } from '../../components/Button';
 
+const ListItem = ({url, text}) => {
+  return (
+    <li className='hover:text-red hover:underline ease-in-out transition-all underline-offset-4 duration-300 '>
+      <NavLink to={url}>{text}</NavLink>
+    </li>
+  );
+};
+const FooterList = [
+  {
+    title: 'CryptoKet',
+    data: [
+      { url: '/', text: 'Explore' },
+      { url: '/', text: 'How it Works' },
+      { url: '/', text: 'Contact Us' },
+    ],
+  },
+  {
+    title: 'Support',
+    data: [
+      { url: '/', text: 'Help center' },
+      { url: '/', text: 'Terms of service' },
+      { url: '/', text: 'Legal' },
+      { url: '/', text: 'Privacy policy' },
+    ],
+  },
+];
+
 export const Footer = () => {
   return (
     <footer className='w-full dark:text-white'>
@@ -23,40 +50,25 @@ export const Footer = () => {
               dark:bg-black-2 dark:border-none dark:text-white`}
                 placeholder={'Your Email'}
               />
-              <Button type='submit' cName='text-white rounded-lg bg-red py-2 px-4'>Email Me!</Button>
+              <Button
+                type='submit'
+                cName='text-white rounded-lg bg-red py-2 px-4'
+              >
+                Email Me!
+              </Button>
             </label>
           </div>
-          <div className=''>
-            <h2 className='font-semibold mb-4 text-lg'>CryptoKet</h2>
-            <ul className='flex-col flex gap-4 '>
-              <li className=''>
-                <NavLink to={'/'}>Explore</NavLink>
-              </li>
-              <li>
-                <NavLink to={'/'}>How it Works</NavLink>
-              </li>
-              <li>
-                <NavLink to={'/'}>Contact Us</NavLink>
-              </li>
-            </ul>
-          </div>
-          <div className=''>
-            <h2 className='font-semibold mb-4 text-lg'>Support</h2>
-            <ul className='flex-col flex gap-4'>
-              <li>
-                <NavLink to={'/'}>Help center</NavLink>
-              </li>
-              <li>
-                <NavLink to={'/'}>Terms of service</NavLink>
-              </li>
-              <li>
-                <NavLink to={'/'}>Legal</NavLink>
-              </li>
-              <li>
-                <NavLink to={'/'}>Privacy policy</NavLink>
-              </li>
-            </ul>
-          </div>
+          {FooterList.map(({ title, data }, index) => (
+            <div key={index}>
+              {title && <h2 className='font-semibold mb-4 text-lg'>{title}</h2>}
+              <ul className='flex-col flex gap-4 '>
+                {data &&
+                  data.map(({ url, text }, index) => (
+                    <ListItem key={index} url={url} text={text} />
+                  ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
       <div

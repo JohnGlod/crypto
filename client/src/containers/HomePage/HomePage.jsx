@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { GridContainer} from '../containers/GridContainer';
-import { useIPFS } from '../hooks/useIPFS';
+import { GridContainer } from '../GridContainer';
+import { useIPFS } from '../../hooks/useIPFS';
 import { useMoralisWeb3Api } from 'react-moralis';
-import { getNFTCollections } from '../store/redusers/selectors/getNFTCollections/getNFTCollections';
+import { getNFTCollections } from '../../store/redusers/selectors/getNFTCollections/getNFTCollections';
 
-export const Home = () => {
+export const HomePage = () => {
   /*   const dispatch = useDispatch();
   const items = useSelector(getNFTCollections); 
   */
@@ -15,11 +15,28 @@ export const Home = () => {
   const [fetchSuccess, setFetchSuccess] = useState(false);
   const [NFTBalance, setNFTBalance] = useState([]);
   const Web3Api = useMoralisWeb3Api();
-
-
+  const updateOffset = (number) => Number(number) + 20;
+  const createOptions = ({ search, limit = 20, offset }) => {
+    const newOffset = updateOffset(offset);
+    return {
+      q: search,
+      limit,
+      offset: newOffset,
+    };
+  };
+  const options = {
+    q: 'Sleepless Streets',
+    limit: 8,
+    offset: 0,
+    filter: 'name',
+  };
+  console.log(fetchSuccess);
   const fetchSearchNFTs = async (options) => {
     try {
       const data = await Web3Api.token.searchNFTs(options);
+
+      console.log(data);
+
       if (data?.result) {
         const NFTs = data.result;
         /* console.log(NFTs);  При некорректном запросе возвращает именно [] */
@@ -27,7 +44,9 @@ export const Home = () => {
         for (const NFT of NFTs) {
           if (NFT?.metadata) {
             NFT.metadata = JSON.parse(NFT.metadata);
-            NFT.metadata.image = resolveLink(NFT.metadata?.image) ?? resolveLink(NFT.metadata?.image_url);
+            NFT.metadata.image =
+              resolveLink(NFT.metadata?.image) ??
+              resolveLink(NFT.metadata?.image_url);
           }
         }
         setNFTBalance(NFTs);
@@ -38,12 +57,7 @@ export const Home = () => {
     }
   };
   useEffect(() => {
-    fetchSearchNFTs({
-      q: 'Lover',
-      filter: 'name',
-      limit: 20,
-      offset: 1000,
-    });
+    fetchSearchNFTs(options);
   }, []);
 
   return (

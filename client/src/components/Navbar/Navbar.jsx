@@ -3,19 +3,19 @@ import { NavLink } from 'react-router-dom';
 import { useMoralis } from 'react-moralis';
 import { HiMenu } from 'react-icons/hi';
 import { AiOutlineClose } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+
 import { Button } from '../Button';
 
 const NavbarItem = ({ title, classProps = '', url, closeMenu }) => {
   return (
     <li
-      className={`lg:mr-[20px] lg:my-0 mb-4 font-semibold text-base ${classProps}`}
+      className={`lg:mr-[20px] lg:my-0 mb-4 font-semibold text-base hover:underline ease-in-out transition-all underline-offset-4 duration-300  ${classProps}`}
       onClick={closeMenu}
     >
       <NavLink
         to={url}
-        className={({ isActive }) =>
-          isActive ? 'dark:text-white' : 'text-gray-middle'
+        className={ ({ isActive }) =>
+          isActive ? 'dark:text-white hover:text-red' : 'text-gray-middle hover:text-red'
         }
       >
         {title}
@@ -73,7 +73,7 @@ export const Navbar = () => {
         </ul>
         <div className='justify-center flex gap-4 border-solid border-t border-gray-light dark:border-black-1 pt-4 lg:gap-0 lg:justify-start lg:p-0 lg:border-none'>
           <Button cName='color-accent lg:ml-4 text-white'>
-            <Link to='/items/new'>Create</Link>
+            <NavLink to='/create'>Create</NavLink>
           </Button>
           <Button
             cName='border border-red text-red lg:ml-[20px] font-semibold'

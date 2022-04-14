@@ -3,13 +3,13 @@ import { useMoralis, useNFTBalances } from 'react-moralis';
 import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
-import { Search } from '../components/Search';
-import { Select } from '../components/Select';
-import { UserProfile } from '../components/UserProfile';
-import { GridContainer } from '../containers/GridContainer';
-import { CustomContainer } from '../containers/CustomContainer';
+import { Search } from '../../components/Search';
+import { Select } from '../../components/Select';
+import { UserProfile } from '../../components/UserProfile';
+import { GridContainer } from '../../containers/GridContainer';
+import { CustomContainer } from '../../containers/CustomContainer';
 
-export const Profile = () => {
+export const ProfilePage = () => {
   const { user, setUserData, isUserUpdating } = useMoralis();
   const { getNFTBalances, data} = useNFTBalances();
   const {

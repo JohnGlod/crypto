@@ -1,10 +1,9 @@
-import React from 'react'
 import { useMoralis } from 'react-moralis';
 
-import { CustomContainer} from '../containers/CustomContainer'
-import { Transactions} from '../components/Transactions'
+import { CustomContainer} from '../../containers/CustomContainer'
+import { Transactions} from '../../components/Transactions'
 
-export const Following = () => {
+export const FollowingPage = () => {
   const { user } = useMoralis();
   return (
     <CustomContainer style='flex-col'>

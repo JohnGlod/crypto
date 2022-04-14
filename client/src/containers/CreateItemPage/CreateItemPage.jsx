@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { Button } from '../components/Button';
-import { DragDropFile } from '../components/DragDropFile';
-import { ReactComponent as ArrowDown } from './../assets/icons/arrowDown.svg';
+import { Button } from '../../components/Button';
+import { DragDropFile } from '../../components/DragDropFile';
+import { ReactComponent as ArrowDown } from '../../assets/icons/arrowDown.svg';
 
-export const CreateItem = () => {
+export const CreateItemPage = () => {
   const [file, setFile] = useState(null);
   const {
     register,

@@ -1,6 +1,6 @@
 import 'tw-elements';
 
-export const Tabs = () => {
+export const Tabs = ({ discription }) => {
   const itemStyle = `nav-link
   w-full
   block
@@ -64,28 +64,12 @@ export const Tabs = () => {
       </ul>
       <div className='tab-content' id='tabs-tabContent3'>
         <div
-          className='tab-pane fade show active'
+          className='tab-pane fade show active whitespace-pre-line'
           id='tabs-home3'
           role='tabpanel'
           aria-labelledby='tabs-home-tab3'
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
-          eligendi provident harum velit explicabo nihil, corporis voluptates
-          molestias sed! Voluptatum, labore. Minima quidem perspiciatis voluptas
-          eius eaque similique! Totam porro eum sunt, nemo saepe soluta facere
-          nulla sequi doloribus hic, quam labore numquam iste aspernatur! Cumque
-          corrupti minima delectus totam! Consequatur aliquam dolorem
-          repudiandae quas totam distinctio modi nam. Nemo eveniet eos autem,
-          vero deleniti nulla accusamus expedita debitis, ratione porro minus!
-          Ipsam fuga earum esse veritatis officiis blanditiis culpa molestiae
-          ut, est dolore, voluptatem recusandae. Corrupti ullam mollitia neque
-          laudantium vel possimus, tempora aliquam, id fugiat alias quos in
-          voluptate modi velit sint dolore iusto excepturi. Ducimus iusto id
-          facere repellat harum fugit magnam porro commodi dolores modi, ut
-          perferendis, repudiandae debitis esse asperiores veritatis aspernatur
-          ullam sunt tenetur! Laudantium commodi delectus sequi consectetur sed
-          dolor ipsum, molestiae magnam consequatur repellendus eligendi beatae
-          expedita quisquam, quasi eveniet, veritatis architecto?
+          {discription}
         </div>
         <div
           className='tab-pane fade'

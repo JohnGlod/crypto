@@ -21,7 +21,10 @@ export const Button = ({
 };
 
 Button.propTypes = {
-  children: PropTypes.any, //PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+  ]),
   func: PropTypes.func,
   cName: PropTypes.string,
   type: PropTypes.string,
