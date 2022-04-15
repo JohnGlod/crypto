@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
+import {changeTokensLongName} from '../../utils/person'
+
 export const Avatar = ({ avatarPhoto, avatarName }) => {
-  const changeTokensLongName = (name) => {
-    const checkHex = name.slice(0, 2) === '0x'
-    if (!checkHex) return name
-    return [name.slice(0, 4), ' ... ' , name.slice( -4)].join('')
-  }
   return (
     <>
       <h4 className='text-xs mb'>Creator</h4>

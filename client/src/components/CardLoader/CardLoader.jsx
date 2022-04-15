@@ -4,9 +4,9 @@ import ContentLoader from "react-content-loader"
 export const CardLoader = (props) => (
   <ContentLoader 
     speed={2}
-    width={235}
-    height={320}
-    viewBox="0 0 235 320"
+    width={230}
+    height={310}
+    viewBox="0 0 210 280"
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"
     {...props}

@@ -1,0 +1,28 @@
+.popup {
+  position: relative;
+}
+.popup:hover:after {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .popup:hover:after {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    right: 50%;
+    top: 2rem;
+    content: attr(data-content);
+    padding: 0.5rem 1rem;
+
+    height: auto;
+    width: max-content;
+    color: #fff;
+    font-size: 12px;
+
+    transition: all ease-in-out 0.8s;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, .8);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  }
+}

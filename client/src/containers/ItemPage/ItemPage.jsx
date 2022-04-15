@@ -7,23 +7,23 @@ import { Avatar } from '../../components/Avatar';
 import { Tabs } from '../../components/Tabs';
 import { Like } from '../../components/Like';
 import { Button } from '../../components/Button';
-import {ItemsLinkBack} from '../../components/ItemsLinkBack'
+import { ItemsLinkBack } from '../../components/ItemsLinkBack';
 import { CustomContainer } from '../CustomContainer';
 
 export const ItemPage = () => {
   const Web3Api = useMoralisWeb3Api();
   const { resolveLink } = useIPFS();
+  const param = useParams();
   const [nftItem, setNftItem] = useState(null);
 
   const openModal = () => {
     console.log('open');
   };
-  const param = useParams()
 
   const fetchAllTokenIds = async () => {
     try {
       const tokenIdMetadata = await Moralis.Web3API.token.getTokenIdMetadata({
-        address : param.address, 
+        address: param.address,
         token_id: param.id,
       });
 
@@ -59,7 +59,7 @@ export const ItemPage = () => {
             <div className='flex items-center gap-5'>
               <h2 className='text-3xl font-semibold'>
                 {nftItem.metadata.name}
-              </h2>{' '}
+              </h2>
               <Like numberOfLikes={92} rounded={true} />
             </div>
             <div className='flex max-w-max gap-2 items-center text-base'>
@@ -91,4 +91,3 @@ export const ItemPage = () => {
     </CustomContainer>
   );
 };
-
