@@ -1,7 +1,7 @@
 
 export const UserProfile = ({ user, testSrc, bannerSrc }) => {
   return (
-    <div className='pt-5 relative mb-20 flex flex-col items-center'>
+    <div className='py-5 relative flex flex-col items-center'>
       <img
         className='w-full lg:h-[300px] object-cover object-center h-[200px] '
         src={

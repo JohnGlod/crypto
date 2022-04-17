@@ -5,13 +5,14 @@ import { useForm } from 'react-hook-form';
 
 import { Search } from '../../components/Search';
 import { Select } from '../../components/Select';
+import { Info } from '../../components/Info';
 import { UserProfile } from '../../components/UserProfile';
 import { GridContainer } from '../../containers/GridContainer';
 import { CustomContainer } from '../../containers/CustomContainer';
 
 export const ProfilePage = () => {
   const { user, setUserData, isUserUpdating } = useMoralis();
-  const { getNFTBalances, data} = useNFTBalances();
+  const { getNFTBalances, data } = useNFTBalances();
   const {
     register,
     formState: { errors, isValid },
@@ -47,25 +48,26 @@ export const ProfilePage = () => {
   return (
     <section className='dark:text-white '>
       <UserProfile user={user} testSrc={testSrc} bannerSrc={bannerSrc} />
-      <CustomContainer style='flex-col items-center'>
-        <div className='hidden px-4 max-w-screen-lg w-full md:flex md:mt-10 justify-between gap-5'>
-          <Search />
-          <Select />
+      {data && data?.total > 0 ? (
+        <CustomContainer style='flex-col items-center'>
+          <div className='hidden px-4 max-w-screen-lg w-full md:flex md:mt-10 justify-between gap-5'>
+            <Search />
+            <Select />
+          </div>
+          <GridContainer NFTBalance={data} />
+          <button className='w-full md:w-1/4 rounded-lg border-red border px-8 py-2 text-red font-bold mx-auto mt-10 hover:bg-red hover:text-white transaction-all easy-in-out duration-500 '>
+            Load more
+          </button>
+          <div className='max-w-screen-lg flex flex-col items-center w-full '></div>
+        </CustomContainer>
+      ) : (
+        <div className='mt-20 py-5'>
+          <Info
+            infoTitle='No your NFTs found.'
+            infoText="Oops, you don't seem to have any NFTs."
+          />
         </div>
-        <div className='max-w-screen-lg flex flex-col'>
-          <h3 className='font-semibold text-xl md:text-3xl dark:text-white mb-5'>
-            My Items
-          </h3>
-          {data && data?.total > 0 ? (
-            <GridContainer NFTBalance={data} />
-          ) : (
-            <span>Oops, you don't seem to have any NFTs.</span>
-          )}
-        </div>
-        <button className='w-full md:w-1/4 rounded-lg border-red border px-8 py-2 text-red font-bold mx-auto mt-10'>
-          Load more
-        </button>
-      </CustomContainer>
+      )}
     </section>
   );
 };

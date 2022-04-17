@@ -31,7 +31,8 @@ const NFTCollectionsSlice = createSlice({
     setSearchNFT(state, action){
       
     },
-    getNFTCollections(state, action) {},
+    getNFTCollections(state, action) {
+    },
   },
   extraReducers: {
     [fetchItems.pending]: (state) => {
