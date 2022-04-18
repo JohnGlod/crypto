@@ -58,7 +58,6 @@ export const ProfilePage = () => {
           <button className='w-full md:w-1/4 rounded-lg border-red border px-8 py-2 text-red font-bold mx-auto mt-10 hover:bg-red hover:text-white transaction-all easy-in-out duration-500 '>
             Load more
           </button>
-          <div className='max-w-screen-lg flex flex-col items-center w-full '></div>
         </CustomContainer>
       ) : (
         <div className='mt-20 py-5'>

@@ -1,13 +1,19 @@
+import { BsSearch } from 'react-icons/bs';
 import { useState } from 'react';
-import {BsSearch } from 'react-icons/bs'
-import {useDispatch, useSelector} from 'react-redux'
-import { setSearchValue } from '../../store/redusers/selectors/setSearchNFT/setSearchNFT';
+
+import { useDispatch } from 'react-redux';
+import { setSearchNFT, resetOffset } from '../../store/redusers/NFTCollectionsSlice';
+
 export const Search = () => {
-/*   const [searchValue, setSearchValue] = useState(''); */
-  const handleSearch = ({target}) => {
-    setSearchValue(target.value);
+  const dispatch = useDispatch();
+  const [value, setValue] = useState('');
+
+  const handleSearch = ({ target, key }) => {
+    if (key === 'Enter') {
+      dispatch(setSearchNFT(target.value));
+      dispatch(resetOffset())
+    }
   };
-  const searchValue = useSelector(setSearchValue)
 
   return (
     <label className='max-w-screen-sm w-full relative'>
@@ -16,10 +22,11 @@ export const Search = () => {
         dark:bg-[#1B1A21] dark:focus:text-[#fff] dark:border-none `}
         type='search'
         placeholder='Search Item Here'
-        value={searchValue}
-        onChange={(e) => handleSearch(e)}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onKeyDown={(e) => handleSearch(e)}
       />
-      <BsSearch className='text-lg text-gray-middle absolute top-1 left-2 translate-y-2/4'/>
+      <BsSearch className='text-lg text-gray-middle absolute top-1 left-2 translate-y-2/4' />
     </label>
   );
 };

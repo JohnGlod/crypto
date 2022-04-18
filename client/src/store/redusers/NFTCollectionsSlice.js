@@ -23,13 +23,29 @@ const NFTCollectionsSlice = createSlice({
   name: 'NFTCollections',
   initialState: {
     NFTCollections: [],
-    searchNFT: '',
+    searchNFT: null,
+    offset: 0,
     status: null,
     error: null,
   },
   reducers: {
     setSearchNFT(state, action){
-      
+      return {
+        ...state,
+        searchNFT : action.payload 
+      }
+    },
+    resetOffset(state){
+      return {
+        ...state,
+        offset : 0,
+      }
+    },
+    changeOffset(state){
+      return {
+        ...state,
+        offset : state.offset + 8 
+      }
     },
     getNFTCollections(state, action) {
     },
@@ -49,5 +65,5 @@ const NFTCollectionsSlice = createSlice({
     },
   },
 })
-export const { getNFTCollections, setSearchNFT, } = NFTCollectionsSlice.actions;
+export const { getNFTCollections, setSearchNFT, changeOffset, resetOffset} = NFTCollectionsSlice.actions;
 export default NFTCollectionsSlice.reducer;
