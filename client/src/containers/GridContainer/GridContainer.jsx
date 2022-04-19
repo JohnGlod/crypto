@@ -2,10 +2,9 @@ import { CardItem } from '../../components/CardItem';
 
 export const GridContainer = ({ NFTBalance, fetchSuccess}) => {
   const renderCards = () => {
-    //const filterItems = NFTBalance.filter(nft => nft.metadata)
-    return (!fetchSuccess ? [...Array(8)] : NFTBalance).map((nft) => (
+    return (!fetchSuccess ? [...Array(8)] : NFTBalance).map((nft, index) => (
       <CardItem
-        key={nft?.token_id}
+        key={nft?.token_id ?? index}
         metadata={nft?.metadata}
         token_address={nft?.token_address}
         token_id={nft?.token_id}

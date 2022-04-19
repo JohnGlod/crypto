@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { useMoralisWeb3Api } from 'react-moralis';
 import { useParams } from 'react-router-dom';
 import { Moralis } from 'moralis';
+
 import { useIPFS } from '../../hooks/useIPFS';
+
 import { Avatar } from '../../components/Avatar';
 import { Tabs } from '../../components/Tabs';
 import { Like } from '../../components/Like';
@@ -14,6 +16,7 @@ export const ItemPage = () => {
   const Web3Api = useMoralisWeb3Api();
   const { resolveLink } = useIPFS();
   const param = useParams();
+  
   const [nftItem, setNftItem] = useState(null);
 
   const openModal = () => {
@@ -50,7 +53,7 @@ export const ItemPage = () => {
           <ItemsLinkBack />
           <div className='grow lg:basis-3/5'>
             <img
-              className='w-3/4 h-auto rounded-lg object-cover object-center  lg:basis-full'
+              className='w-full  h-full rounded-lg object-cover object-center  '
               src={nftItem.metadata.image ?? nftItem.metadata.image_url}
               alt={nftItem.metadata.name}
             />
@@ -60,7 +63,7 @@ export const ItemPage = () => {
               <h2 className='text-3xl font-semibold'>
                 {nftItem.metadata.name}
               </h2>
-              <Like numberOfLikes={92} rounded={true} />
+              <Like numberOfLikes={92} rounded={true} nftItem={nftItem}/>
             </div>
             <div className='flex max-w-max gap-2 items-center text-base'>
               <div>

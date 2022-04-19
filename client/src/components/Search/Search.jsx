@@ -2,7 +2,10 @@ import { BsSearch } from 'react-icons/bs';
 import { useState } from 'react';
 
 import { useDispatch } from 'react-redux';
-import { setSearchNFT, resetOffset } from '../../store/redusers/NFTCollectionsSlice';
+import {
+  setSearchNFT,
+  resetOffset,
+} from '../../store/redusers/NFTCollectionsSlice';
 
 export const Search = () => {
   const dispatch = useDispatch();
@@ -10,8 +13,8 @@ export const Search = () => {
 
   const handleSearch = ({ target, key }) => {
     if (key === 'Enter') {
+      dispatch(resetOffset());
       dispatch(setSearchNFT(target.value));
-      dispatch(resetOffset())
     }
   };
 
