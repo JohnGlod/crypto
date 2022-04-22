@@ -1,20 +1,14 @@
-import { BsSearch } from 'react-icons/bs';
 import { useState } from 'react';
-
-import { useDispatch } from 'react-redux';
-import {
-  setSearchNFT,
-  resetOffset,
-} from '../../store/redusers/NFTCollectionsSlice';
+import { useSearchParams } from 'react-router-dom';
+import { BsSearch } from 'react-icons/bs';
 
 export const Search = () => {
-  const dispatch = useDispatch();
   const [value, setValue] = useState('');
+  const [_, setSearchParams] = useSearchParams();
 
   const handleSearch = ({ target, key }) => {
     if (key === 'Enter') {
-      dispatch(resetOffset());
-      dispatch(setSearchNFT(target.value));
+      setSearchParams({ q: target.value });
     }
   };
 
@@ -29,7 +23,7 @@ export const Search = () => {
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={(e) => handleSearch(e)}
       />
-      <BsSearch className='text-lg text-gray-middle absolute top-1 left-2 translate-y-2/4' />
+      <BsSearch className='text-2xl text-gray-middle absolute top-2 left-2 ' />
     </label>
   );
 };

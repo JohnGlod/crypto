@@ -10,13 +10,14 @@ import { Tabs } from '../../components/Tabs';
 import { Like } from '../../components/Like';
 import { Button } from '../../components/Button';
 import { ItemsLinkBack } from '../../components/ItemsLinkBack';
+import { PictureItem } from '../../components/PictureItem';
 import { CustomContainer } from '../CustomContainer';
 
 export const ItemPage = () => {
   const Web3Api = useMoralisWeb3Api();
   const { resolveLink } = useIPFS();
   const param = useParams();
-  
+
   const [nftItem, setNftItem] = useState(null);
 
   const openModal = () => {
@@ -47,15 +48,16 @@ export const ItemPage = () => {
     fetchAllTokenIds();
   }, []);
   return (
-    <CustomContainer style='items-center flex-col lg:flex-row '>
+    <CustomContainer style='items-start flex-col lg:flex-row '>
       {nftItem && (
         <>
           <ItemsLinkBack />
           <div className='grow lg:basis-3/5'>
-            <img
-              className='w-full  h-full rounded-lg object-cover object-center  '
-              src={nftItem.metadata.image ?? nftItem.metadata.image_url}
-              alt={nftItem.metadata.name}
+            <PictureItem
+              pictureImage={
+                nftItem.metadata.image ?? nftItem.metadata.image_url
+              }
+              pictureName={nftItem.metadata.name}
             />
           </div>
           <div className='flex flex-col w-full gap-5 px-5 basis-4/12 border-l-2 border-gray-light'>
@@ -63,7 +65,7 @@ export const ItemPage = () => {
               <h2 className='text-3xl font-semibold'>
                 {nftItem.metadata.name}
               </h2>
-              <Like numberOfLikes={92} rounded={true} nftItem={nftItem}/>
+              <Like numberOfLikes={92} rounded={true} nftItem={nftItem} />
             </div>
             <div className='flex max-w-max gap-2 items-center text-base'>
               <div>
@@ -79,7 +81,7 @@ export const ItemPage = () => {
                 cName='color-accent text-white font-semibold w-[200px]'
                 func={openModal}
               >
-                Buy for {10} ETH
+                Buy for 10 ETH
               </Button>
               <Button
                 cName='border border-red text-red lg:ml-[20px] font-semibold w-[200px]'

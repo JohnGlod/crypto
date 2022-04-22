@@ -20,7 +20,7 @@ export const Info = ({ infoTitle, infoText }) => {
       <h5 className='font-semibold text-3xl'>{infoTitle}</h5>
       <p className='text-xl '>{infoText}</p>
       <Button
-        cName='color-accent w-full md:w-3/12 text-white font-bold uppercase'
+        cName='color-accent w-full max-w-[200px] text-white font-bold uppercase'
         func={() => navigate(-1)}
         type='button'
       >

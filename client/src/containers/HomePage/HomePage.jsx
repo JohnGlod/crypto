@@ -1,83 +1,81 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useMoralisWeb3Api } from 'react-moralis';
+import { useSearchParams } from 'react-router-dom';
+
+import { useIPFS } from '../../hooks/useIPFS';
+
+import { selectNFTCollections } from '../../store/redusers/selectors/selectNFTCollections/selectNFTCollections';
+import { selectCursor } from '../../store/redusers/selectors/selectCursor/selectCursor';
+
+import { setNFTCollections } from '../../store/redusers/NFTCollectionsSlice';
 
 import { GridContainer } from '../GridContainer';
 import { WellcomeBanner } from '../../components/WellcomeBanner';
-import { useIPFS } from '../../hooks/useIPFS';
-import { useMoralisWeb3Api } from 'react-moralis';
 
-import { getNFTCollections } from '../../store/redusers/selectors/getNFTCollections/getNFTCollections';
-import { selectSearchNFT } from '../../store/redusers/selectors/selectSearchNFT/selectSearchNFT';
-import { changeOffset } from '../../store/redusers/NFTCollectionsSlice';
 export const HomePage = () => {
   const dispatch = useDispatch();
   const Web3Api = useMoralisWeb3Api();
   const { resolveLink } = useIPFS();
 
-  const searchNFT = useSelector(selectSearchNFT);
-  const offset = useSelector((state) => state.NFTCollections.offset);
+  const [searchParams] = useSearchParams();
+  const searchNFT = searchParams.get('q') || 'Sleepless Streets'
+
+  const NFTBalance = useSelector(selectNFTCollections);
+  const cursor = useSelector(selectCursor);
 
   const [fetchSuccess, setFetchSuccess] = useState(false);
-  const [NFTBalance, setNFTBalance] = useState([]);
 
-  const updateItems = () => {
-    dispatch(changeOffset());
-  };
+  const [disableUpdate, setDisableUpdate] = useState(false);
 
-  const fetchSearchNFTs = async ({
-    q = 'Sleepless Streets',
-    limit = 8,
-    offset = 0,
-    filter,
-  }) => {
+  const getSearchNFTs = async (options) => {
     try {
-      const data = await Web3Api.token.searchNFTs({
-        q,
-        limit,
-        offset,
-        filter,
-      });
-
+      setDisableUpdate(true);
+      const data = await Web3Api.token.searchNFTs(options);
+      console.log(data);
       if (data?.result) {
         const NFTs = data.result;
-        console.log(NFTs);
         setFetchSuccess(true);
-        for (const NFT of NFTs) {
+        NFTs.forEach((NFT) => {
           if (NFT?.metadata) {
             NFT.metadata = JSON.parse(NFT.metadata);
             NFT.metadata.image =
               resolveLink(NFT.metadata?.image) ??
               resolveLink(NFT.metadata?.image_url);
           }
-        }
-        setNFTBalance(NFTs);
-        return NFTs;
+        });
+        dispatch(setNFTCollections(data));
       }
     } catch (error) {
-      console.error(error);
+      throw new Error('Request SearchNFTs ended with an error', error);
+    } finally {
+      setDisableUpdate(false);
     }
   };
 
+  const updateNFTBalance = () => {
+    if (!cursor) {
+      setDisableUpdate(true);
+    }
+    getSearchNFTs({ q: searchNFT, cursor, limit: 8 });
+  };
+
   useEffect(() => {
-    fetchSearchNFTs({
-      q: searchNFT ?? 'Sleepless Streets',
-      filter: 'name',
-      offset,
-    });
-  }, [offset, searchNFT]);
+    getSearchNFTs({ q: searchNFT, limit: 8 });
+  }, [searchNFT]);
 
   return (
     <main className='w-full p-5 flex flex-col gap-5 items-center max-w-screen-2xl mx-auto'>
       <WellcomeBanner title='Discover, collect, and sell extraordinary NFTs' />
       <section className='pb-10 flex flex-col'>
-        <h2 className='font-semibold text-3xl mb-8 dark:text-white'>
+        <h2 className='font-semibold justify-self-start text-3xl mb-8 dark:text-white'>
           Hot Bids
         </h2>
         <GridContainer NFTBalance={NFTBalance} fetchSuccess={fetchSuccess} />
         <button
-          className='w-full m-auto md:w-1/4 rounded-lg border-red border px-8 py-2 text-red font-bold mx-auto mt-10 hover:bg-red hover:text-white transaction-all easy-in-out duration-500 '
-          onClick={updateItems}
-          disabled={false}
+          className='w-full m-auto  max-w-[200px] rounded-lg border-red border px-8 py-2 text-red font-bold mx-auto mt-10 hover:bg-red hover:text-white transaction-all easy-in-out duration-500 disabled:bg-gray-light hover:disabled:text-red'
+          onClick={updateNFTBalance}
+          disabled={disableUpdate}
         >
           Load more
         </button>

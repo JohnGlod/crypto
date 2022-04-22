@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useMoralis, useMoralisWeb3Api } from 'react-moralis';
+import { useMoralisWeb3Api } from 'react-moralis';
 
 import { BASE_URL } from '../../constants/project';
 import { Info } from '../Info';
@@ -27,8 +27,8 @@ export const Transactions = ({ user }) => {
   }, []);
 
   return (
-    <div>
-      <h3 className='font-semibold text-xl dark:text-white '>Transactions</h3>
+    <div className='flex flex-col items-center'>
+      <h3 className='font-semibold text-3xl'>Transactions</h3>
       {transactions.length ? (
         <ul>
           {transactions.map((transaction) => (

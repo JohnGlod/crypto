@@ -71,6 +71,7 @@ export const Navbar = () => {
             />
           ))}
         </ul>
+        
         <div className='justify-center flex gap-4 border-solid border-t border-gray-light dark:border-black-1 pt-4 lg:gap-0 lg:justify-start lg:p-0 lg:border-none'>
           <Button cName='color-accent lg:ml-4 text-white'>
             <NavLink to='/create'>Create</NavLink>

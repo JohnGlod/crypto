@@ -62,14 +62,16 @@ export const Tabs = ({ discription }) => {
           </a>
         </li>
       </ul>
-      <div className='tab-content' id='tabs-tabContent3'>
+      <div className='tab-content  ' id='tabs-tabContent3'>
         <div
-          className='tab-pane fade show active whitespace-pre-line'
+          className='tab-pane fade show active whitespace-pre-line '
           id='tabs-home3'
           role='tabpanel'
           aria-labelledby='tabs-home-tab3'
         >
-          {discription}
+          <p className='max-h-96 overflow-auto overscroll-auto '>
+            {discription}
+          </p>
         </div>
         <div
           className='tab-pane fade'
@@ -77,13 +79,15 @@ export const Tabs = ({ discription }) => {
           role='tabpanel'
           aria-labelledby='tabs-profile-tab3'
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-          recusandae molestiae totam beatae, eos nihil debitis delectus sit
-          voluptas provident obcaecati quia labore deserunt exercitationem
-          maxime dolor voluptatibus perspiciatis omnis, similique corrupti
-          dicta? Tenetur nulla officiis quisquam, aspernatur, corrupti magni
-          eligendi ut similique obcaecati asperiores nihil deleniti cumque totam
-          nisi?
+          <p className='max-h-96 overflow-auto overscroll-auto '>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
+            recusandae molestiae totam beatae, eos nihil debitis delectus sit
+            voluptas provident obcaecati quia labore deserunt exercitationem
+            maxime dolor voluptatibus perspiciatis omnis, similique corrupti
+            dicta? Tenetur nulla officiis quisquam, aspernatur, corrupti magni
+            eligendi ut similique obcaecati asperiores nihil deleniti cumque
+            totam nisi?
+          </p>
         </div>
         <div
           className='tab-pane fade'
@@ -91,9 +95,11 @@ export const Tabs = ({ discription }) => {
           role='tabpanel'
           aria-labelledby='tabs-profile-tab3'
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus facilis
-          placeat accusamus enim delectus repellendus assumenda quisquam sit
-          modi earum!
+          <p className='max-h-96 overflow-auto overscroll-auto'>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
+            facilis placeat accusamus enim delectus repellendus assumenda
+            quisquam sit modi earum!
+          </p>
         </div>
       </div>
     </>
