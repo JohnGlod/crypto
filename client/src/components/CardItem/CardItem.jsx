@@ -20,6 +20,7 @@ dark:bg-black-3 dark:border-none dark:text-white `}
             <PictureItem
               pictureImage={metadata.image ?? metadata.image_url}
               pictureName={metadata.name}
+              classes='w-full h-full'
             />
           </Link>
         </div>

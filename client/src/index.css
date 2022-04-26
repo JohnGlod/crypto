@@ -1,13 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+
+  /* -------------- Scrollbar -------------- */
+  scrollbar-color: #da18a3 #e3e1e3;
+  scrollbar-width: thin;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(101.12deg, #e3e1e3 27.35%, #888888 99.99%, #4f4f4f 100%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(101.12deg, #eb1484 27.35%, #c91cc3 99.99%, #c81cc5 100%, #c81cc5 100%);
+  border-radius: 8px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
 
 .color-accent {
   background: linear-gradient(101.12deg, #eb1484 27.35%, #c91cc3 99.99%, #c81cc5 100%, #c81cc5 100%);
@@ -18,7 +36,8 @@ textarea {
 }
 
 .nav-tabs .nav-link.active {
-  color: #DA18A3;
+  color: #da18a3;
   font-weight: 600;
-  border-bottom: 2px solid #DA18A3; 
+  border-bottom: 2px solid #da18a3;
 }
+

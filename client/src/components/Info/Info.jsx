@@ -4,17 +4,15 @@ import { useNavigate } from 'react-router-dom';
 
 import { Button } from '../Button';
 
-import image from '../../assets/image/logo.png';
+import CatFail from './image/cat-fail.gif';
 
 export const Info = ({ infoTitle, infoText }) => {
   const navigate = useNavigate();
   return (
-    <div
-      className=' flex flex-col items-center justify-center w-full py-5 px-2 h-auto gap-5' 
-    >
+    <div className='flex flex-col items-center justify-center w-full py-5 px-2 h-auto gap-5'>
       <img
-        className='dark:border-4 rounded-full w-[180px]'
-        src={image}
+        className='dark:border-4 rounded-lg max-w-[300px]'
+        src={CatFail}
         alt='test'
       />
       <h5 className='font-semibold text-3xl'>{infoTitle}</h5>

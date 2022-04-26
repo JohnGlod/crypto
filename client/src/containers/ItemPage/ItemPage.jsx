@@ -12,17 +12,16 @@ import { Button } from '../../components/Button';
 import { ItemsLinkBack } from '../../components/ItemsLinkBack';
 import { PictureItem } from '../../components/PictureItem';
 import { CustomContainer } from '../CustomContainer';
+import { Tables } from '../../components/Tables';
+import { Dialog } from '../../components/Dialog';
 
 export const ItemPage = () => {
   const Web3Api = useMoralisWeb3Api();
   const { resolveLink } = useIPFS();
   const param = useParams();
 
+  const [dialogActive, setDialogActive] = useState(false);
   const [nftItem, setNftItem] = useState(null);
-
-  const openModal = () => {
-    console.log('open');
-  };
 
   const fetchAllTokenIds = async () => {
     try {
@@ -48,16 +47,21 @@ export const ItemPage = () => {
     fetchAllTokenIds();
   }, []);
   return (
-    <CustomContainer style='items-start flex-col lg:flex-row '>
+    <CustomContainer
+      style={`${
+        dialogActive ? 'overflow-hidden' : ''
+      } items-start flex-col lg:flex-row`}
+    >
       {nftItem && (
         <>
           <ItemsLinkBack />
           <div className='grow lg:basis-3/5'>
             <PictureItem
               pictureImage={
-                nftItem.metadata.image ?? nftItem.metadata.image_url
+                nftItem.metadata.image
               }
               pictureName={nftItem.metadata.name}
+              classes='w-full h-full'
             />
           </div>
           <div className='flex flex-col w-full gap-5 px-5 basis-4/12 border-l-2 border-gray-light'>
@@ -76,21 +80,41 @@ export const ItemPage = () => {
             </div>
             <Avatar avatarName={nftItem.owner_of} />
             <Tabs discription={nftItem.metadata.description} />
-            <div className='flex gap-5 items-center justify-between'>
+            <div
+              className='flex gap-5 items-center  justify-evenly  lg:justify-between'
+              data-bs-toggle='modal'
+              data-bs-target='#exampleModalCenter'
+            >
               <Button
                 cName='color-accent text-white font-semibold w-[200px]'
-                func={openModal}
+                func={() => setDialogActive(true)}
               >
                 Buy for 10 ETH
               </Button>
-              <Button
-                cName='border border-red text-red lg:ml-[20px] font-semibold w-[200px]'
-                func={openModal}
-              >
+              <Button cName='border border-red text-red lg:ml-[20px] font-semibold w-[200px]'>
                 Make Offer
               </Button>
             </div>
           </div>
+          <Dialog active={dialogActive} setActive={setDialogActive}>
+            <div className='flex flex-col gap-5'>
+              <h4 className=' mx-auto text-2xl font-semibold '> Check Out </h4>
+              <div className='border-y border-gray-light p-8'>
+                <Tables name={nftItem.metadata.name} image={nftItem.metadata.image} />
+              </div>
+              <div className='flex gap-5 items-center  justify-center'>
+                <Button cName='color-accent text-white font-semibold w-[200px]'>
+                  Checkout
+                </Button>
+                <Button
+                  cName='border border-red text-red lg:ml-[20px] font-semibold w-[200px]'
+                  func={() => setDialogActive(false)}
+                >
+                  Cancel
+                </Button>
+              </div>
+            </div>
+          </Dialog>
         </>
       )}
     </CustomContainer>
