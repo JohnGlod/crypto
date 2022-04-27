@@ -4,16 +4,18 @@ import { useParams } from 'react-router-dom';
 import { Moralis } from 'moralis';
 
 import { useIPFS } from '../../hooks/useIPFS';
-
+import { changeTokensLongName } from '../../utils/person';
 import { Avatar } from '../../components/Avatar';
 import { Tabs } from '../../components/Tabs';
 import { Like } from '../../components/Like';
 import { Button } from '../../components/Button';
 import { ItemsLinkBack } from '../../components/ItemsLinkBack';
 import { PictureItem } from '../../components/PictureItem';
-import { CustomContainer } from '../CustomContainer';
 import { Tables } from '../../components/Tables';
 import { Dialog } from '../../components/Dialog';
+import { SocialList } from '../../components/SocialList';
+
+import { CustomContainer } from '../CustomContainer';
 
 export const ItemPage = () => {
   const Web3Api = useMoralisWeb3Api();
@@ -21,6 +23,8 @@ export const ItemPage = () => {
   const param = useParams();
 
   const [dialogActive, setDialogActive] = useState(false);
+  const [makeOffer, setMakeOffer] = useState(false);
+
   const [nftItem, setNftItem] = useState(null);
 
   const fetchAllTokenIds = async () => {
@@ -57,9 +61,7 @@ export const ItemPage = () => {
           <ItemsLinkBack />
           <div className='grow lg:basis-3/5'>
             <PictureItem
-              pictureImage={
-                nftItem.metadata.image
-              }
+              pictureImage={nftItem.metadata.image}
               pictureName={nftItem.metadata.name}
               classes='w-full h-full'
             />
@@ -98,12 +100,21 @@ export const ItemPage = () => {
           </div>
           <Dialog active={dialogActive} setActive={setDialogActive}>
             <div className='flex flex-col gap-5'>
-              <h4 className=' mx-auto text-2xl font-semibold '> Check Out </h4>
+              <h4 className=' mx-auto text-2xl font-semibold '>
+                {' '}
+                Payment Successful{' '}
+              </h4>
               <div className='border-y border-gray-light p-8'>
-                <Tables name={nftItem.metadata.name} image={nftItem.metadata.image} />
+                <Tables
+                  name={nftItem.metadata.name}
+                  image={nftItem.metadata.image}
+                />
               </div>
               <div className='flex gap-5 items-center  justify-center'>
-                <Button cName='color-accent text-white font-semibold w-[200px]'>
+                <Button
+                  cName='color-accent text-white font-semibold w-[200px]'
+                  func={() => setMakeOffer(true)}
+                >
                   Checkout
                 </Button>
                 <Button
@@ -112,6 +123,29 @@ export const ItemPage = () => {
                 >
                   Cancel
                 </Button>
+              </div>
+            </div>
+          </Dialog>
+          <Dialog active={makeOffer} setActive={setMakeOffer}>
+            <div className='flex flex-col gap-5 items-center'>
+              <h4 className='text-2xl font-semibold '> Check Out </h4>
+              <div className=' border-y border-gray-light p-8 '>
+                <PictureItem
+                  pictureImage={nftItem.metadata.image}
+                  pictureName={nftItem.metadata.name}
+                  classes='w-52 h-52 mx-auto mb-5'
+                />
+                <p className='text-center'>
+                  You successfully purchased{' '}
+                  <span className='font-semibold'>{nftItem.metadata.name}</span>{' '}
+                  from{' '}
+                  <span className='font-semibold'>
+                    {changeTokensLongName(nftItem.owner_of)}
+                  </span>
+                </p>
+              </div>
+              <div className='flex gap-5 items-center  justify-center'>
+                <SocialList />
               </div>
             </div>
           </Dialog>

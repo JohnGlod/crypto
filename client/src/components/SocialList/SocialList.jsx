@@ -23,7 +23,7 @@ const List = [
         heigth={25}
       />
     ),
-    data: 'Instagram — An organization recognized as extremist in the territory of the Russian Federation',
+    data: 'Instagram — Organization recognized as extremist in Russian',
     url: '#!'
   },
   {

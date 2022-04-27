@@ -10,16 +10,15 @@
     display: block;
     position: absolute;
     z-index: 2;
-    right: 50%;
+    right: -50%;
     top: 2rem;
     content: attr(data-content);
     padding: 0.5rem 1rem;
-
+    overflow-wrap: break-word; 
     height: auto;
-    width: max-content;
+    width: max-content ;
     color: #fff;
     font-size: 12px;
-
     transition: all ease-in-out 0.8s;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, .8);
