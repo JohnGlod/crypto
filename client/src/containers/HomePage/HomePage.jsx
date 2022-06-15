@@ -19,7 +19,7 @@ export const HomePage = () => {
   const { resolveLink } = useIPFS();
 
   const [searchParams] = useSearchParams();
-  const searchNFT = searchParams.get('q') || 'Sleepless Streets'
+  const searchNFT = searchParams.get('q') || 'Sleepless Streets';
 
   const NFTBalance = useSelector(selectNFTCollections);
   const cursor = useSelector(selectCursor);
@@ -32,7 +32,6 @@ export const HomePage = () => {
     try {
       setDisableUpdate(true);
       const data = await Web3Api.token.searchNFTs(options);
-      console.log(data);
       if (data?.result) {
         const NFTs = data.result;
         setFetchSuccess(true);

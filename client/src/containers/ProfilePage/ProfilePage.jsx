@@ -10,8 +10,10 @@ import { UserProfile } from '../../components/UserProfile';
 import { GridContainer } from '../../containers/GridContainer';
 import { CustomContainer } from '../../containers/CustomContainer';
 
+import {TEST_AVATAR_SRC, TEST_BANNER_SRC} from '../../constants/project'
+
 export const ProfilePage = () => {
-  const { user, setUserData, isUserUpdating } = useMoralis();
+  const { user, setUserData, isUserUpdating, isAuthenticated } = useMoralis();
   const { getNFTBalances, data } = useNFTBalances();
   const {
     register,
@@ -21,11 +23,6 @@ export const ProfilePage = () => {
   } = useForm({
     mode: 'onSubmit',
   });
-
-  //const items = useSelector((state) => state.items.items);
-  const testSrc =
-    'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg';
-  const bannerSrc = false;
 
   const changeNameAcc = (data) => {
     if (data.trim() !== '') {
@@ -47,7 +44,7 @@ export const ProfilePage = () => {
 
   return (
     <section className='dark:text-white '>
-      <UserProfile user={user} testSrc={testSrc} bannerSrc={bannerSrc} />
+      {isAuthenticated ? <UserProfile user={user} avatar={TEST_AVATAR_SRC} banner={TEST_BANNER_SRC} /> : null }
       {data && data?.total > 0 ? (
         <CustomContainer style='flex-col items-center'>
           <div className='hidden px-4 max-w-screen-lg w-full md:flex md:mt-10 justify-between gap-5'>
