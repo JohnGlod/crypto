@@ -5,7 +5,7 @@ import { Header } from '../../components/Header';
 
 export const Layout = () => {
   return (
-    <div className='bg-white dark:bg-dark min-h-screen'>
+    <div className='bg-white dark:bg-dark h-full '>
       <Header />
       <Outlet />
       <Footer />

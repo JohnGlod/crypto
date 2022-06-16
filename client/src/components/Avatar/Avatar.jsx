@@ -11,8 +11,6 @@ export const Avatar = ({ avatarPhoto, avatarName }) => (
         className='rounded-full w-[50px] h-[50px] object-cover object-center border-2 border-dark '
         src={
           avatarPhoto
-            ? avatarPhoto
-            : 'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg'
         }
         alt='My avatar'
       />

@@ -43,7 +43,9 @@ export const HomePage = () => {
               resolveLink(NFT.metadata?.image_url);
           }
         });
-        dispatch(setNFTCollections(data));
+        dispatch(
+          setNFTCollections({ result: NFTs, cursor: data.cursor })
+        );
       }
     } catch (error) {
       throw new Error('Request SearchNFTs ended with an error', error);

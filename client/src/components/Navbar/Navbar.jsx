@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useMoralis } from 'react-moralis';
 import { HiMenu } from 'react-icons/hi';
@@ -14,8 +14,10 @@ const NavbarItem = ({ title, classProps = '', url, closeMenu }) => {
     >
       <NavLink
         to={url}
-        className={ ({ isActive }) =>
-          isActive ? 'dark:text-white hover:text-red' : 'text-gray-middle hover:text-red'
+        className={({ isActive }) =>
+          isActive
+            ? 'dark:text-white hover:text-red'
+            : 'text-gray-middle hover:text-red'
         }
       >
         {title}
@@ -35,6 +37,23 @@ export const Navbar = () => {
   const { isAuthenticated, authenticate, logout } = useMoralis();
 
   const closeMenu = () => setToggleMenu((prev) => !prev);
+
+  useEffect(() => {
+    const html = window.document.documentElement;
+    const scroll = toggleMenu ? 'overflow-hidden' : 'overflow-auto';
+
+    switch (scroll) {
+      case 'overflow-hidden':
+        html.classList.add(scroll);
+        break;
+      case 'overflow-auto':
+        html.classList.remove('overflow-hidden');
+        break;
+      default:
+        html.classList.add(scroll);
+        break;
+    }
+  }, [toggleMenu]);
 
   return (
     <>
@@ -56,7 +75,7 @@ export const Navbar = () => {
         </div>
       </div>
       <nav
-        className={`absolute z-10 top-[100px] bg-white dark:bg-dark px-4 pb-4 left-0 w-full min-h-full transition-all duration-500 md:transition-none easy-in
+        className={`absolute z-10 top-[90px] bg-white dark:bg-dark px-4 pb-4 left-0 w-full min-h-full transition-all duration-500 md:transition-none easy-in
       lg:static lg:flex items-center lg:p-0 lg:z-auto lg:w-auto lg:min-h-min  ${
         toggleMenu ? 'top-20 opacity-100' : '-top-full opacity-0 z-[-5]'
       } lg:opacity-100 `}
@@ -71,7 +90,7 @@ export const Navbar = () => {
             />
           ))}
         </ul>
-        
+
         <div className='justify-center flex gap-4 border-solid border-t border-gray-light dark:border-black-1 pt-4 lg:gap-0 lg:justify-start lg:p-0 lg:border-none'>
           <Button cName='color-accent lg:ml-4 text-white'>
             <NavLink to='/create'>Create</NavLink>
