@@ -9,7 +9,7 @@ import { Button } from '../Button';
 const NavbarItem = ({ title, classProps = '', url, closeMenu }) => {
   return (
     <li
-      className={`lg:mr-[20px] lg:my-0 mb-4 font-semibold text-base hover:underline ease-in-out transition-all underline-offset-4 duration-300 shrink-0 ${classProps}`}
+      className={`lg:mr-[20px] lg:text-base lg:my-0 mb-5 font-semibold hover:underline ease-in-out transition-all underline-offset-4 duration-300 shrink-0 text-2xl ${classProps}`}
       onClick={closeMenu}
     >
       <NavLink
@@ -75,12 +75,12 @@ export const Navbar = () => {
         </div>
       </div>
       <nav
-        className={`absolute z-10 top-[90px] bg-white dark:bg-dark px-4 pb-4 left-0 w-full min-h-full transition-all duration-500 md:transition-none easy-in
+        className={`absolute z-10 top-[90px] bg-white dark:bg-dark p-5 left-0 w-full min-h-full transition-all duration-500 md:transition-none easy-in
       lg:static lg:flex items-center lg:p-0 lg:z-auto lg:w-auto lg:min-h-min  ${
         toggleMenu ? 'top-20 opacity-100' : '-top-full opacity-0 z-[-5]'
       } lg:opacity-100 `}
       >
-        <ul className='lg:flex lg:items-center pt-1'>
+        <ul className='lg:flex lg:items-center lg:p-1 py-5'>
           {NavList.map((item, index) => (
             <NavbarItem
               key={index}
