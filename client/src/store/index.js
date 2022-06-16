@@ -5,6 +5,6 @@ import favoriteSlice from './redusers/favoriteSlice'
 export default configureStore({
   reducer: {
     NFTCollections : NFTCollectionsSlice, 
-    favorite: favoriteSlice,
+    favorites: favoriteSlice,
   },
 })
