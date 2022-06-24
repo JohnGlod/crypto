@@ -32,9 +32,3 @@ export const debounce = (func, delay) => {
     timeout = setTimeout(fnCall, delay);
   };
 };
-
-/* 
-
-my src="https://gateway.ipfs.io/QmfPkuG8SBWYLm9FJZuwarz7wsDjEmW8kx6WKt8HyiAThD/nft.jpg" 
-https://gateway.pinata.cloud/ipfs/QmQxAKt97XYRSeqWn2tiFdvBavfSoV5cBucfzW3qVUyze7
-*/

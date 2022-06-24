@@ -17,17 +17,10 @@ const NFTCollectionsSlice = createSlice({
         cursor: action.payload.cursor,
       };
     },
-    resetCursor(state) {
-      return {
-        ...state,
-        cursor: null,
-      };
-    },
   },
 });
 
 export const {
-  resetCursor,
   setNFTCollections,
 } = NFTCollectionsSlice.actions;
 
