@@ -44,7 +44,7 @@ export const ProfilePage = () => {
 
   return (
     <section className='dark:text-white '>
-      {isAuthenticated ? <UserProfile user={user} avatar={TEST_AVATAR_SRC} banner={TEST_BANNER_SRC} /> : null }
+      {isAuthenticated ? <UserProfile user={user} avatarSrc={TEST_AVATAR_SRC} banner={TEST_BANNER_SRC} /> : null }
       {data && data?.total > 0 ? (
         <CustomContainer style='flex-col items-center'>
           <div className='hidden px-4 max-w-screen-lg w-full md:flex md:mt-10 justify-between gap-5'>

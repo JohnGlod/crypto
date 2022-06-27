@@ -1,4 +1,16 @@
-export const Dialog = ({ active, setActive, children }) => (
+import React from 'react'
+
+export interface IDialog {
+  active: boolean;
+  setActive: (value: boolean) => void;
+  children: React.ReactNode;
+}
+
+export const Dialog = ({
+  active,
+  setActive,
+  children,
+}: IDialog): JSX.Element => (
   <div
     className={`h-full w-full dark:bg-black-2 bg-[#bbbbbd] fixed inset-0  justify-center items-center z-10 transition-opacity ease-in  duration-700   ${
       active

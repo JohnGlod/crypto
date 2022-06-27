@@ -1,12 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
+// @ts-ignore
 import { Button } from '../Button';
 
 import CatFail from './image/cat-fail.gif';
 
-export const Info = ({ infoTitle, infoText }) => {
+export interface IInfo {
+  infoTitle: string;
+  infoText: string;
+}
+export const Info = ({ infoTitle, infoText }: IInfo): JSX.Element => {
   const navigate = useNavigate();
   return (
     <div className='flex flex-col items-center justify-center w-full py-5 px-2 h-auto gap-5'>
@@ -26,9 +30,4 @@ export const Info = ({ infoTitle, infoText }) => {
       </Button>
     </div>
   );
-};
-
-Info.propTypes = {
-  infoTitle: PropTypes.string.isRequired,
-  infoText: PropTypes.string.isRequired,
 };
