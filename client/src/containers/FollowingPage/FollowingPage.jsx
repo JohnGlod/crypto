@@ -1,3 +1,4 @@
+import React from 'react'
 import { useSelector } from 'react-redux';
 
 import { selectFavorites } from '../../store/redusers/selectors/selectFavorites/selectFavorites.js';

@@ -1,6 +1,17 @@
+import React from 'react'
+
 import { CardItem } from '../../components/CardItem';
 
-export const GridContainer = ({ NFTBalance, fetchSuccess}) => {
+interface INFTBalance {
+  
+}
+
+interface IGrid{
+  NFTBalance: INFTBalance,
+  fetchSuccess: boolean,
+}
+
+export const GridContainer = ({ NFTBalance, fetchSuccess} : IGrid) => {
   const renderCards = () => {
     return (!fetchSuccess ? [...Array(8)] : NFTBalance).map((nft, index) => (
       <CardItem

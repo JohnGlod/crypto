@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMoralisWeb3Api } from 'react-moralis';
 import { useParams } from 'react-router-dom';
 import { Moralis } from 'moralis';

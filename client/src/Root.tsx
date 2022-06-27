@@ -5,7 +5,7 @@ import { MoralisProvider } from 'react-moralis';
 import {APP_ID, SERVER_URL} from './constants/project'
 import App from './containers/App';
 
-export const Root = ({ store }) => (
+const Root = ({ store }) => (
   <BrowserRouter>
     <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
       <Provider store={store}>
@@ -14,3 +14,5 @@ export const Root = ({ store }) => (
     </MoralisProvider>
   </BrowserRouter>
 );
+
+export default Root

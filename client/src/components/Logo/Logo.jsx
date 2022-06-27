@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { ReactComponent as Icons } from '../../assets/icons/Logo.svg';
 import { useDarkMode } from '../../hooks/useDarkMode';
 

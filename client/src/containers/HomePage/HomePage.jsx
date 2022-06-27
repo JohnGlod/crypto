@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMoralisWeb3Api } from 'react-moralis';
 import { useSearchParams } from 'react-router-dom';
@@ -43,9 +43,7 @@ export const HomePage = () => {
               resolveLink(NFT.metadata?.image_url);
           }
         });
-        dispatch(
-          setNFTCollections({ result: NFTs, cursor: data.cursor })
-        );
+        dispatch(setNFTCollections({ result: NFTs, cursor: data.cursor }));
       }
     } catch (error) {
       throw new Error('Request SearchNFTs ended with an error', error);

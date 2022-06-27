@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useMoralis, useNFTBalances } from 'react-moralis';
 import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';

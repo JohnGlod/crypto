@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '../../components/Button';
@@ -58,9 +58,9 @@ export const CreateItemPage = () => {
                 })}
               />
             </label>
-            {errors?.itemName && (
-              <p className='text-[#DC2626] p-1'>{errors?.itemName?.message}</p>
-            )}
+         {/*    {errors?.itemName && (
+              <p className='text-red p-1'>{errors?.itemName?.message}</p>
+            )} */}
           </div>
           <div className='w-full flex flex-col justify-between '>
             <label className='font-bold text-xl'>
@@ -74,9 +74,9 @@ export const CreateItemPage = () => {
                 placeholder='Decription of your item'
               ></textarea>
             </label>
-            {errors?.itemDescr && (
-              <p className='text-[#DC2626] p-1'>{errors?.itemDescr?.message}</p>
-            )}
+        {/*     {errors?.itemDescr && (
+              <p className='text-red p-1'>{errors?.itemDescr?.message}</p>
+            )} */}
           </div>
           <div className='w-full flex flex-col justify-between '>
             <label className='font-bold text-xl'>
@@ -108,9 +108,9 @@ export const CreateItemPage = () => {
                 </div>
               </div>
             </label>
-            {errors?.itemPrice && (
-              <p className='text-[#DC2626] p-1'>{errors?.itemPrice?.message}</p>
-            )}
+         {/*    {errors?.itemPrice && (
+              <p className='text-red p-1'>{errors?.itemPrice?.message}</p>
+            )} */}
           </div>
         </fieldset>
         <Button
