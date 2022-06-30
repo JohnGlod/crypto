@@ -1,4 +1,5 @@
-import { IAvatar } from '../Avatar/Avatar';
+
+import { AvatarProps } from '../UI-Kit/UIAvatar/UIAvatar.props';
 
 export interface IUser {
   username: string;
@@ -30,7 +31,7 @@ export interface IParseUser {
   className: string;
 }
 
-export interface IProfile extends IAvatar {
+export interface IProfile extends AvatarProps {
   banner: string;
   user: IParseUser;
 }
@@ -40,7 +41,6 @@ export const UserProfile = ({
   avatarSrc,
   banner,
 }: IProfile): JSX.Element => {
-  console.log(user);
   return (
     <div className='py-5 relative flex flex-col items-center'>
       <img
@@ -48,17 +48,18 @@ export const UserProfile = ({
         src={banner}
         alt='banner'
       />
-      <div className={`absolute top-2/4 left-2/4 -translate-x-2/4 `}>
+      <div className='absolute top-2/4 left-2/4 -translate-x-2/4 '>
         <div className='rounded-full border-4 border-dark w-32 h-32 lg:w-56 lg:h-56'>
           <img
-            className={`w-full h-full rounded-full object-cover object-center`}
+            className='w-full h-full rounded-full object-cover object-center'
             src={avatarSrc}
             alt='profile'
           />
         </div>
       </div>
       <h2 className='relative top-14 lg:top-24 font-semibold text-center text-xl flex gap-5 items-center '>
-        <span className=''>{user.getUsername()}</span>
+        Benedict CUMberbatch
+        {/* <span className=''>{user.getUsername()}</span> */}
       </h2>
     </div>
   );

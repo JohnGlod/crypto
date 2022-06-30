@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Logo } from '../../components/Logo';
+import { useDarkMode } from '../../hooks/useDarkMode';
+
+import { UILogo } from '../../components/UI-Kit/UILogo';
 import { SocialList } from '../../components/SocialList';
 import { Button } from '../../components/Button';
 
-const ListItem = ({url, text}) => {
+const ListItem = ({ url, text }) => {
   return (
     <li className='hover:text-red hover:underline ease-in-out transition-all underline-offset-4 duration-300 '>
       <NavLink to={url}>{text}</NavLink>
@@ -33,6 +35,8 @@ const FooterList = [
 ];
 
 export const Footer = () => {
+  const [isDarkMode, toggleDarkMode] = useDarkMode();
+
   return (
     <footer className='w-full dark:text-white'>
       <div className='border-y-gray-light border-x-0 dark:border-y-black-1 border-solid border-2 '>
@@ -42,7 +46,7 @@ export const Footer = () => {
           <div
             className={`flex-col flex gap-5 flex-auto w-full md:flex-none md:w-auto`}
           >
-            <Logo />
+            <UILogo logoClick={toggleDarkMode} theme={isDarkMode} />
             <h4 className='text-base'>Get the lastes Updates</h4>
             <label htmlFor='' className={`flex `}>
               <input

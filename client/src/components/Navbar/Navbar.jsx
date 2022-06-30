@@ -41,7 +41,7 @@ export const Navbar = () => {
   useEffect(() => {
     const html = window.document.documentElement;
     const scroll = toggleMenu ? 'overflow-hidden' : 'overflow-auto';
-
+    console.log(toggleMenu, 'toggleMenu')
     switch (scroll) {
       case 'overflow-hidden':
         html.classList.add(scroll);
@@ -50,7 +50,7 @@ export const Navbar = () => {
         html.classList.remove('overflow-hidden');
         break;
       default:
-        html.classList.add(scroll);
+        html.classList.add('overflow-auto');
         break;
     }
   }, [toggleMenu]);
@@ -86,7 +86,7 @@ export const Navbar = () => {
               key={index}
               title={item.title}
               url={item.url}
-              closeMenu={closeMenu}
+              closeMenu={toggleMenu && closeMenu}
             />
           ))}
         </ul>

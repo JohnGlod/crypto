@@ -10,7 +10,7 @@ import { UserProfile } from '../../components/UserProfile';
 import { GridContainer } from '../../containers/GridContainer';
 import { CustomContainer } from '../../containers/CustomContainer';
 
-import {TEST_AVATAR_SRC, TEST_BANNER_SRC} from '../../constants/project'
+import {TEST_AVATAR_SRC, TEST_BANNER_SRC} from '../../utils/constants'
 
 export const ProfilePage = () => {
   const { user, setUserData, isUserUpdating, isAuthenticated } = useMoralis();

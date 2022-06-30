@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useMoralisWeb3Api } from 'react-moralis';
 
-import { BASE_URL } from '../../constants/project';
+import { BASE_URL } from '../../utils/constants';
 import { Info } from '../Info';
 
 export const Transactions = ({ user }) => {

@@ -5,9 +5,9 @@ import { Moralis } from 'moralis';
 
 import { useIPFS } from '../../hooks/useIPFS';
 import { changeTokensLongName } from '../../utils/person';
-import {TEST_AVATAR_SRC} from '../../constants/project'
+import { TEST_AVATAR_SRC } from '../../utils/constants';
 
-import { Avatar } from '../../components/Avatar';
+import { UIAvatar } from '../../components/UI-Kit/UIAvatar';
 import { Tabs } from '../../components/Tabs';
 import { Like } from '../../components/Like';
 import { Button } from '../../components/Button';
@@ -82,7 +82,20 @@ export const ItemPage = () => {
               &#183;
               <div>20 of 25 available </div>
             </div>
-            <Avatar avatarName={nftItem.owner_of} avatarPhoto={TEST_AVATAR_SRC} />
+
+            <h4 className='text-xs mb'>Creator</h4>
+            <div className='flex items-center max-w-[200px] gap-5'>
+              <UIAvatar
+                avatarSize='small'
+                avatarClick={() => console.log('avatar')}
+                avatarSrc={TEST_AVATAR_SRC}
+                avatarAlt='Creator'
+              />
+              <h5 className='text-base'>
+                {changeTokensLongName(nftItem.owner_of)}
+              </h5>
+            </div>
+
             <Tabs discription={nftItem.metadata.description} />
             <div
               className='flex gap-5 items-center  justify-evenly  lg:justify-between'
