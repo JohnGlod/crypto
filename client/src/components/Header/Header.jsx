@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useDarkMode } from '../../hooks/useDarkMode';
 
-import { UILogo } from '../../components/UI-Kit/UILogo';
+import { UILogo } from '../../components/UI-Kit';
 import { Navbar } from '../../components/Navbar';
 import { Search } from '../../components/Search';
 

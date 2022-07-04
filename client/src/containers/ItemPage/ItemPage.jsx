@@ -7,14 +7,13 @@ import { useIPFS } from '../../hooks/useIPFS';
 import { changeTokensLongName } from '../../utils/person';
 import { TEST_AVATAR_SRC } from '../../utils/constants';
 
-import { UIAvatar } from '../../components/UI-Kit/UIAvatar';
+import { UIAvatar, UIButton, UIDialog, UITabs} from '../../components/UI-Kit';
 import { Tabs } from '../../components/Tabs';
 import { Like } from '../../components/Like';
-import { Button } from '../../components/Button';
+
 import { ItemsLinkBack } from '../../components/ItemsLinkBack';
 import { PictureItem } from '../../components/PictureItem';
 import { Tables } from '../../components/Tables';
-import { Dialog } from '../../components/Dialog';
 import { SocialList } from '../../components/SocialList';
 
 import { CustomContainer } from '../CustomContainer';
@@ -65,7 +64,7 @@ export const ItemPage = () => {
             <PictureItem
               pictureImage={nftItem.metadata.image}
               pictureName={nftItem.metadata.name}
-              classes='w-full h-full'
+              className='w-full h-full'
             />
           </div>
           <div className='flex flex-col w-full gap-5 px-5 basis-4/12 border-l-2 border-gray-light'>
@@ -102,18 +101,18 @@ export const ItemPage = () => {
               data-bs-toggle='modal'
               data-bs-target='#exampleModalCenter'
             >
-              <Button
+              <UIButton
                 cName='color-accent text-white font-semibold w-[200px]'
                 func={() => setDialogActive(true)}
               >
                 Buy for 10 ETH
-              </Button>
-              <Button cName='border border-red text-red lg:ml-[20px] font-semibold w-[200px]'>
+              </UIButton>
+              <UIButton cName='border border-red text-red lg:ml-[20px] font-semibold w-[200px]'>
                 Make Offer
-              </Button>
+              </UIButton>
             </div>
           </div>
-          <Dialog active={dialogActive} setActive={setDialogActive}>
+          <UIDialog active={dialogActive} setActive={setDialogActive}>
             <div className='flex flex-col gap-5'>
               <h4 className=' mx-auto text-2xl font-semibold '>
                 {' '}
@@ -126,22 +125,22 @@ export const ItemPage = () => {
                 />
               </div>
               <div className='flex gap-5 items-center  justify-center'>
-                <Button
+                <UIButton
                   cName='color-accent text-white font-semibold w-[200px]'
                   func={() => setMakeOffer(true)}
                 >
                   Checkout
-                </Button>
-                <Button
+                </UIButton>
+                <UIButton
                   cName='border border-red text-red lg:ml-[20px] font-semibold w-[200px]'
                   func={() => setDialogActive(false)}
                 >
                   Cancel
-                </Button>
+                </UIButton>
               </div>
             </div>
-          </Dialog>
-          <Dialog active={makeOffer} setActive={setMakeOffer}>
+          </UIDialog>
+          <UIDialog active={makeOffer} setActive={setMakeOffer}>
             <div className='flex flex-col gap-5 items-center'>
               <h4 className='text-2xl font-semibold '> Check Out </h4>
               <div className=' border-y border-gray-light p-8 '>
@@ -163,7 +162,7 @@ export const ItemPage = () => {
                 <SocialList />
               </div>
             </div>
-          </Dialog>
+          </UIDialog>
         </>
       )}
     </CustomContainer>

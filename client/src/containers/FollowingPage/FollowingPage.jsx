@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { selectFavorites } from '../../store/redusers/selectors/selectFavorites/selectFavorites.js';
 
-import { Info } from '../../components/Info';
+import { UIInfo } from '../../components/UI-Kit';
 
 import { CustomContainer } from '../../containers/CustomContainer';
 import { GridContainer } from '../../containers/GridContainer';
@@ -16,7 +16,7 @@ export const FollowingPage = () => {
       {favorites.length ? (
         <GridContainer NFTBalance={favorites} fetchSuccess={true} />
       ) : (
-        <Info
+        <UIInfo
           infoTitle='No favorites found.'
           infoText='It seems the list of favorites is empty.'
           classes='mt-5'

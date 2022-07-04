@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 
 import {
   setItemToFavorite,
@@ -9,8 +8,9 @@ import {
 
 import { ReactComponent as Liked } from '../../assets/icons/like.svg';
 import { ReactComponent as ActiveLike } from '../../assets/icons/like-active.svg';
+import { LikeProps } from './Like.props';
 
-export const Like = ({ rounded = false, numberOfLikes = 10, nftItem }) => {
+export const Like = ({ rounded = false, numberOfLikes = 10, nftItem } : LikeProps) => {
   const dispath = useDispatch();
   const [liked, setLiked] = useState(false);
 
@@ -43,10 +43,4 @@ export const Like = ({ rounded = false, numberOfLikes = 10, nftItem }) => {
       <span>{numberOfLikes}</span>
     </div>
   );
-};
-
-Like.propTypes = {
-  rounded: PropTypes.bool,
-  numberOfLikes: PropTypes.number,
-  nftItem: PropTypes.object.isRequired,
 };

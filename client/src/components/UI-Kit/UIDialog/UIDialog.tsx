@@ -1,16 +1,11 @@
 import React from 'react'
+import {DialogProps} from './UIDialog.props'
 
-export interface IDialog {
-  active: boolean;
-  setActive: (value: boolean) => void;
-  children: React.ReactNode;
-}
-
-export const Dialog = ({
+export const UIDialog = ({
   active,
   setActive,
   children,
-}: IDialog): JSX.Element => (
+}: DialogProps) => (
   <div
     className={`h-full w-full dark:bg-black-2 bg-[#bbbbbd] fixed inset-0  justify-center items-center z-10 transition-opacity ease-in  duration-700   ${
       active

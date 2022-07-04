@@ -3,9 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 import { useDarkMode } from '../../hooks/useDarkMode';
 
-import { UILogo } from '../../components/UI-Kit/UILogo';
 import { SocialList } from '../../components/SocialList';
-import { Button } from '../../components/Button';
+import { UILogo, UIButton } from '../../components/UI-Kit';
 
 const ListItem = ({ url, text }) => {
   return (
@@ -55,12 +54,12 @@ export const Footer = () => {
               dark:bg-black-2 dark:border-none dark:text-white`}
                 placeholder={'Your Email'}
               />
-              <Button
+              <UIButton
                 type='submit'
                 cName='text-white rounded-lg bg-red py-2 px-4'
               >
                 Email Me!
-              </Button>
+              </UIButton>
             </label>
           </div>
           {FooterList.map(({ title, data }, index) => (

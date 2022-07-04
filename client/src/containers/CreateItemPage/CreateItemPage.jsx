@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { Button } from '../../components/Button';
 import { DragDropFile } from '../../components/DragDropFile';
-import { FilePrewie } from '../../components/FilePrewie';
+
+import { UIButton, UIFilePrewie } from '../../components/UI-Kit';
 import { ReactComponent as ArrowDown } from '../../assets/icons/arrowDown.svg';
 
 export const CreateItemPage = () => {
@@ -35,7 +35,7 @@ export const CreateItemPage = () => {
           </legend>
           <DragDropFile setFile={setFile} />
           {file && (
-            <FilePrewie
+            <UIFilePrewie
               fileName={file.name}
               fileSrc={file.preview}
               fileType={file.type}
@@ -113,13 +113,13 @@ export const CreateItemPage = () => {
             )} */}
           </div>
         </fieldset>
-        <Button
+        <UIButton
           type='submit'
           cName='color-accent text-white'
           disabled={!isValid}
         >
           Create Item
-        </Button>
+        </UIButton>
       </form>
     </section>
   );

@@ -1,11 +1,16 @@
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
-import { Like } from '../Like';
-import { PictureItem } from '../PictureItem';
-import { CardLoader } from '../CardLoader';
+import { Like } from '../../Like';
+import { PictureItem } from '../../PictureItem';
+import { CardLoader } from '../../CardLoader';
 
-export const CardItem = ({ metadata, loading, token_address, token_id }) => (
+import { CardProps } from './UICard.props';
+export const UICard = ({
+  metadata,
+  loading,
+  token_address,
+  token_id,
+}: CardProps) => (
   <>
     {!loading ? (
       <CardLoader />
@@ -20,7 +25,7 @@ dark:bg-black-3 dark:border-none dark:text-white `}
             <PictureItem
               pictureImage={metadata.image ?? metadata.image_url}
               pictureName={metadata.name}
-              classes='w-full h-full'
+              className='w-full h-full'
             />
           </Link>
         </div>
@@ -40,10 +45,3 @@ dark:bg-black-3 dark:border-none dark:text-white `}
     )}
   </>
 );
-
-CardItem.propTypes = {
-  loading: PropTypes.bool,
-  metadata: PropTypes.object,
-  token_address: PropTypes.string,
-  token_id: PropTypes.string,
-};

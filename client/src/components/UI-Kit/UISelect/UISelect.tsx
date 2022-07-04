@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const Select = () => {
+export const UISelect = () => {
   const [filter, setFilter] = useState('all');
   const handleChange = ({ target }) => setFilter(target.value);
 
@@ -19,3 +19,12 @@ export const Select = () => {
     </select>
   );
 };
+
+/* 
+{filterActive, filterChange }
+
+options: [{
+  value: 'all',
+  text:'All',
+},{}, {}]
+*/
