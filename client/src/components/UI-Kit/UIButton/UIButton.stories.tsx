@@ -17,12 +17,12 @@ export const Medium = Template.bind({});
 Medium.args = {
   type: 'button',
   children: 'Click me!',
-  cName: '',
+  className: '',
 };
 
 export const Small = Template.bind({});
 Small.args = {
   type: 'button',
   children: 'Click me!',
-  cName: ''
+  className: ''
 };

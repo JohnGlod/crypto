@@ -12,6 +12,7 @@ import { setNFTCollections } from '../../store/redusers/NFTCollectionsSlice';
 
 import { GridContainer } from '../GridContainer';
 import { WellcomeBanner } from '../../components/WellcomeBanner';
+import { UIHtag, UIButton } from '../../components/UI-Kit';
 
 export const HomePage = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ export const HomePage = () => {
     try {
       setDisableUpdate(true);
       const data = await Web3Api.token.searchNFTs(options);
+      console.log('getSearchNFTs');
       if (data?.result) {
         const NFTs = data.result;
         setFetchSuccess(true);
@@ -64,22 +66,25 @@ export const HomePage = () => {
   }, [searchNFT]);
 
   return (
-    <main className='w-full p-5 flex flex-col gap-5 items-center max-w-screen-2xl mx-auto'>
-      <WellcomeBanner title='Discover, collect, and sell extraordinary NFTs' />
+    <main className='w-full p-5 flex flex-col gap-5 items-center max-w-screen-2xl mx-auto min-h-screen'>
+      <WellcomeBanner>
+        Discover, collect, and sell extraordinary NFTs
+      </WellcomeBanner>
       <section className='pb-10 flex flex-col'>
-        <h2 className='font-semibold justify-self-start text-3xl mb-8 dark:text-white'>
+        <UIHtag tag='h1' className='mb-8 dark:text-white'>
           Hot Bids
-        </h2>
+        </UIHtag>
         <GridContainer NFTBalance={NFTBalance} fetchSuccess={fetchSuccess} />
-        <button
-          className='w-full m-auto  max-w-[200px] rounded-lg border-red border px-8 py-2 text-red font-bold mx-auto mt-10 hover:bg-red hover:text-white transaction-all easy-in-out duration-500 disabled:bg-gray-light hover:disabled:text-red'
+        <UIButton
           onClick={updateNFTBalance}
           disabled={disableUpdate}
+          appearance='primary'
+          size='full'
+          className='mt-10 m-auto lg:w-1/2'
         >
           Load more
-        </button>
+        </UIButton>
       </section>
-      {/* <Popup /> */}
     </main>
   );
 };

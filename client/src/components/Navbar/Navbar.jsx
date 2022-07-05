@@ -86,18 +86,19 @@ export const Navbar = () => {
               key={index}
               title={item.title}
               url={item.url}
-              closeMenu={toggleMenu && closeMenu}
+              closeMenu={toggleMenu ? closeMenu : undefined }
             />
           ))}
         </ul>
 
         <div className='justify-center flex gap-4 border-solid border-t border-gray-light dark:border-black-1 pt-4 lg:gap-0 lg:justify-start lg:p-0 lg:border-none'>
-          <UIButton cName='color-accent lg:ml-4 text-white'>
+          <UIButton className='lg:ml-4' appearance='primary'>
             <NavLink to='/create'>Create</NavLink>
           </UIButton>
           <UIButton
-            cName='border border-red text-red lg:ml-[20px] font-semibold'
-            buttonClick={
+            className='lg:ml-[20px]'
+            appearance='secondary'
+            onClick={
               !isAuthenticated
                 ? () =>
                     authenticate({

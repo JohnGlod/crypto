@@ -58,9 +58,9 @@ export const CreateItemPage = () => {
                 })}
               />
             </label>
-         {/*    {errors?.itemName && (
+            {errors?.itemName && (
               <p className='text-red p-1'>{errors?.itemName?.message}</p>
-            )} */}
+            )}
           </div>
           <div className='w-full flex flex-col justify-between '>
             <label className='font-bold text-xl'>
@@ -74,9 +74,9 @@ export const CreateItemPage = () => {
                 placeholder='Decription of your item'
               ></textarea>
             </label>
-        {/*     {errors?.itemDescr && (
+            {errors?.itemDescr && (
               <p className='text-red p-1'>{errors?.itemDescr?.message}</p>
-            )} */}
+            )}
           </div>
           <div className='w-full flex flex-col justify-between '>
             <label className='font-bold text-xl'>
@@ -108,9 +108,9 @@ export const CreateItemPage = () => {
                 </div>
               </div>
             </label>
-         {/*    {errors?.itemPrice && (
+            {errors?.itemPrice && (
               <p className='text-red p-1'>{errors?.itemPrice?.message}</p>
-            )} */}
+            )}
           </div>
         </fieldset>
         <UIButton

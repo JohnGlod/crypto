@@ -17,7 +17,7 @@ export const Tables = ({name, image }) => {
                 image
               }
               pictureName={name}
-              classes='w-[50px] h-[50px] lg:w-[100px] lg:h-[100px]'
+              className='w-[50px] h-[50px] lg:w-[100px] lg:h-[100px]'
             />
             <div>
               <h5 className='font-semibold'>Mia Ayana</h5>

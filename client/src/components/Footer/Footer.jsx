@@ -46,7 +46,7 @@ export const Footer = () => {
             className={`flex-col flex gap-5 flex-auto w-full md:flex-none md:w-auto`}
           >
             <UILogo logoClick={toggleDarkMode} theme={isDarkMode} />
-            <h4 className='text-base'>Get the lastes Updates</h4>
+            <span className='text-base'>Get the lastes Updates</span>
             <label htmlFor='' className={`flex `}>
               <input
                 type='email'
@@ -56,7 +56,7 @@ export const Footer = () => {
               />
               <UIButton
                 type='submit'
-                cName='text-white rounded-lg bg-red py-2 px-4'
+                appearance='primary'
               >
                 Email Me!
               </UIButton>

@@ -7,7 +7,7 @@ import { useIPFS } from '../../hooks/useIPFS';
 import { changeTokensLongName } from '../../utils/person';
 import { TEST_AVATAR_SRC } from '../../utils/constants';
 
-import { UIAvatar, UIButton, UIDialog, UITabs} from '../../components/UI-Kit';
+import { UIAvatar, UIButton, UIDialog, UIHtag, UITabs} from '../../components/UI-Kit';
 import { Tabs } from '../../components/Tabs';
 import { Like } from '../../components/Like';
 
@@ -69,9 +69,9 @@ export const ItemPage = () => {
           </div>
           <div className='flex flex-col w-full gap-5 px-5 basis-4/12 border-l-2 border-gray-light'>
             <div className='flex items-center gap-5'>
-              <h2 className='text-3xl font-semibold'>
+              <UIHtag tag='h1'>
                 {nftItem.metadata.name}
-              </h2>
+              </UIHtag>
               <Like numberOfLikes={92} rounded={true} nftItem={nftItem} />
             </div>
             <div className='flex max-w-max gap-2 items-center text-base'>
@@ -82,7 +82,7 @@ export const ItemPage = () => {
               <div>20 of 25 available </div>
             </div>
 
-            <h4 className='text-xs mb'>Creator</h4>
+            <span className='text-xs mb'>Creator</span>
             <div className='flex items-center max-w-[200px] gap-5'>
               <UIAvatar
                 avatarSize='small'
@@ -90,9 +90,9 @@ export const ItemPage = () => {
                 avatarSrc={TEST_AVATAR_SRC}
                 avatarAlt='Creator'
               />
-              <h5 className='text-base'>
+              <p className='text-base'>
                 {changeTokensLongName(nftItem.owner_of)}
-              </h5>
+              </p>
             </div>
 
             <Tabs discription={nftItem.metadata.description} />
@@ -102,22 +102,22 @@ export const ItemPage = () => {
               data-bs-target='#exampleModalCenter'
             >
               <UIButton
-                cName='color-accent text-white font-semibold w-[200px]'
-                func={() => setDialogActive(true)}
+                appearance='primary'
+                onClick={() => setDialogActive(true)}
+                className='w-[200px]'
               >
                 Buy for 10 ETH
               </UIButton>
-              <UIButton cName='border border-red text-red lg:ml-[20px] font-semibold w-[200px]'>
+              <UIButton className='w-[200px]' appearance='secondary'>
                 Make Offer
               </UIButton>
             </div>
           </div>
           <UIDialog active={dialogActive} setActive={setDialogActive}>
             <div className='flex flex-col gap-5'>
-              <h4 className=' mx-auto text-2xl font-semibold '>
-                {' '}
-                Payment Successful{' '}
-              </h4>
+              <UIHtag tag='h2' className='mx-auto'>
+                Payment Successful
+              </UIHtag>
               <div className='border-y border-gray-light p-8'>
                 <Tables
                   name={nftItem.metadata.name}
@@ -126,14 +126,16 @@ export const ItemPage = () => {
               </div>
               <div className='flex gap-5 items-center  justify-center'>
                 <UIButton
-                  cName='color-accent text-white font-semibold w-[200px]'
-                  func={() => setMakeOffer(true)}
+                  className='w-[200px]'
+                  appearance='primary'
+                  onClick={() => setMakeOffer(true)}
                 >
                   Checkout
                 </UIButton>
                 <UIButton
-                  cName='border border-red text-red lg:ml-[20px] font-semibold w-[200px]'
-                  func={() => setDialogActive(false)}
+                  className='lg:ml-[20px] w-[200px]'
+                  appearance='secondary'
+                  onClick={() => setDialogActive(false)}
                 >
                   Cancel
                 </UIButton>
@@ -142,12 +144,12 @@ export const ItemPage = () => {
           </UIDialog>
           <UIDialog active={makeOffer} setActive={setMakeOffer}>
             <div className='flex flex-col gap-5 items-center'>
-              <h4 className='text-2xl font-semibold '> Check Out </h4>
+              <UIHtag tag='h2'>Check Out</UIHtag>
               <div className=' border-y border-gray-light p-8 '>
                 <PictureItem
                   pictureImage={nftItem.metadata.image}
                   pictureName={nftItem.metadata.name}
-                  classes='w-52 h-52 mx-auto mb-5'
+                  className='w-52 h-52 mx-auto mb-5'
                 />
                 <p className='text-center'>
                   You successfully purchased{' '}

@@ -17,8 +17,10 @@ export const UIInfo = ({ infoTitle, infoText }: InfoProps): JSX.Element => {
       <h5 className='font-semibold text-3xl'>{infoTitle}</h5>
       <p className='text-xl '>{infoText}</p>
       <UIButton
-        cName='color-accent w-full max-w-[200px] text-white font-bold uppercase'
-        buttonClick={() => navigate(-1)}
+        size='full'
+        appearance='primary'
+        className='uppercase max-w-[200px]'
+        onClick={() => navigate(-1)}
       >
         Come back
       </UIButton>

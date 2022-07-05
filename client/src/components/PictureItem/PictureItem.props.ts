@@ -7,4 +7,5 @@ export interface PictureItemProps
   > {
   pictureImage: string;
   pictureName: string;
+  className: string,
 }

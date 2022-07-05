@@ -6,7 +6,11 @@ export interface ButtonProps
     HTMLButtonElement
   > {
   children: React.ReactNode;
-  buttonClick?: React.MouseEventHandler<HTMLButtonElement>;
-  cName?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  className?: string;
+  size?: 'normal' | 'full';
+  rounded?: 'rounded' | 'none';
   type?: 'button' | 'reset' | 'submit';
+  disabled?: false | true;
+  appearance: 'primary' | 'secondary';
 }
