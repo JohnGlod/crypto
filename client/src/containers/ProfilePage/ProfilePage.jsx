@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMoralis, useNFTBalances } from 'react-moralis';
-import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
 import { Search } from '../../components/Search';
@@ -10,7 +9,7 @@ import { CustomContainer } from '../../containers/CustomContainer';
 
 import { UIInfo, UISelect } from '../../components/UI-Kit';
 
-import {TEST_AVATAR_SRC, TEST_BANNER_SRC} from '../../utils/constants'
+import { TEST_AVATAR_SRC, TEST_BANNER_SRC } from '../../utils/constants';
 
 export const ProfilePage = () => {
   const { user, setUserData, isUserUpdating, isAuthenticated } = useMoralis();
@@ -24,6 +23,16 @@ export const ProfilePage = () => {
     mode: 'onSubmit',
   });
 
+  const selectOptions = [
+    {
+      value: 'all',
+      key: '1',
+      text: 'All',
+    },
+    { value: 'listed', key: '2', text: 'Recently Listed' },
+    { value: 'visited', key: '3', text: ' Most Visited' },
+  ];
+
   const changeNameAcc = (data) => {
     if (data.trim() !== '') {
       setUserData({
@@ -33,6 +42,14 @@ export const ProfilePage = () => {
       reset();
     }
   };
+
+  const [filter, setFilter] = useState('');
+
+  const handleFilter = (e) => {
+    const { target } = e;
+    if (target) setFilter(target.value);
+  };
+
   useEffect(() => {
     getNFTBalances({
       params: {
@@ -44,12 +61,25 @@ export const ProfilePage = () => {
 
   return (
     <section className='dark:text-white '>
-      {isAuthenticated ? <UserProfile user={user} avatarSrc={TEST_AVATAR_SRC} banner={TEST_BANNER_SRC} /> : null }
+      {isAuthenticated ? (
+        <UserProfile
+          user={user}
+          avatarSrc={TEST_AVATAR_SRC}
+          banner={TEST_BANNER_SRC}
+        />
+      ) : null}
       {data && data?.total > 0 ? (
         <CustomContainer style='flex-col items-center'>
           <div className='hidden px-4 max-w-screen-lg w-full md:flex md:mt-10 justify-between gap-5'>
             <Search />
-            <UISelect />
+            <UISelect
+              options={selectOptions}
+              className='mb-8 '
+              placeholder='Choose a filter...'
+              name='Filter'
+              value={filter}
+              onChange={handleFilter}
+            />
           </div>
           <GridContainer NFTBalance={data} />
           <button className='w-full md:w-1/4 rounded-lg border-red border px-8 py-2 text-red font-bold mx-auto mt-10 hover:bg-red hover:text-white transaction-all easy-in-out duration-500 '>

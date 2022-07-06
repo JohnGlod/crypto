@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { UIButton } from './UIButton';
@@ -13,16 +12,55 @@ const Template: ComponentStory<typeof UIButton> = (args: ButtonProps) => (
   <UIButton {...args} />
 );
 
-export const Medium = Template.bind({});
-Medium.args = {
+export const Normal = Template.bind({});
+Normal.args = {
+  rounded :'rounded',
+  size: 'normal',
+  children: 'Click me!!!',
   type: 'button',
-  children: 'Click me!',
   className: '',
+  disabled : false,
 };
 
-export const Small = Template.bind({});
-Small.args = {
+export const Full = Template.bind({});
+Full.args = {
+  rounded :'rounded',
+  size: 'full',
+  children: 'Click me!!!',
   type: 'button',
-  children: 'Click me!',
-  className: ''
+  className: '',
+  disabled : false,
+};
+
+export const Primary = Template.bind({});
+Primary.args = {
+  rounded :'rounded',
+  size: 'normal',
+  children: 'Click me!!!',
+  type: 'button',
+  className: '',
+  appearance: 'primary',
+  disabled : false,
+};
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+  rounded :'rounded',
+  size: 'normal',
+  children: 'Click me!!!',
+  type: 'button',
+  className: '',
+  appearance: 'secondary',
+  disabled : false,
+};
+
+
+export const disabled = Template.bind({});
+disabled.args = {
+  rounded :'rounded',
+  size: 'normal',
+  children: 'Click me!!!',
+  type: 'button',
+  className: '',
+  disabled : true,
 };

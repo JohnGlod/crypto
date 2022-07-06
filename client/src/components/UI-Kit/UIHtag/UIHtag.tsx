@@ -40,8 +40,5 @@ export const UIHtag = ({ tag, children, className, theme }: HtagProps) => {
           {children}
         </h3>
       );
-    default:
-      <></>;
-      break;
   }
 };

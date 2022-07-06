@@ -1,8 +1,13 @@
-import { PictureItem } from '../../PictureItem';
-import { CardLoader } from '../../CardLoader';
+import { Link } from 'react-router-dom';
+
+import { Like } from '../Like';
+import { PictureItem } from '../PictureItem';
+import { CardLoader } from '../CardLoader';
+
 import { CardProps } from './UICard.props';
 
-export const UICard = ({ loading, imageSrc, name }: CardProps) => {
+export const UICard = ({ loading, nftItem, imageSrc, name}: CardProps) => {
+
   return (
     <>
       {!loading ? (
@@ -14,11 +19,13 @@ export const UICard = ({ loading, imageSrc, name }: CardProps) => {
   dark:bg-black-3 dark:border-none dark:text-white `}
         >
           <div className='flex-auto basis-[130px] h-2/4'>
-            <PictureItem
-              pictureImage={imageSrc}
-              pictureName={name}
-              className='w-full h-full'
-            />
+            <Link to={`/nft/${nftItem?.token_address}/${nftItem?.token_id}`}>
+              <PictureItem
+                pictureImage={imageSrc}
+                pictureName={name}
+                className='w-full h-full'
+              />
+            </Link>
           </div>
           <div>
             <p className='font-semibold truncate'>{name}</p>
@@ -26,6 +33,7 @@ export const UICard = ({ loading, imageSrc, name }: CardProps) => {
               <div>
                 <span className='font-semibold'>0.3</span> ETH
               </div>
+              <Like numberOfLikes={15} nftItem={nftItem} />
             </div>
           </div>
         </div>

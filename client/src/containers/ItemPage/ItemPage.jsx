@@ -64,7 +64,7 @@ export const ItemPage = () => {
             <PictureItem
               pictureImage={nftItem.metadata.image}
               pictureName={nftItem.metadata.name}
-              className='w-full h-full'
+              className='w-full lg:w-4/5 h-auto'
             />
           </div>
           <div className='flex flex-col w-full gap-5 px-5 basis-4/12 border-l-2 border-gray-light'>

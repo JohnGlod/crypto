@@ -12,7 +12,7 @@ import { setNFTCollections } from '../../store/redusers/NFTCollectionsSlice';
 
 import { GridContainer } from '../GridContainer';
 import { WellcomeBanner } from '../../components/WellcomeBanner';
-import { UIHtag, UIButton } from '../../components/UI-Kit';
+import { UIHtag, UIButton, UISelect } from '../../components/UI-Kit';
 
 export const HomePage = () => {
   const dispatch = useDispatch();
@@ -74,6 +74,7 @@ export const HomePage = () => {
         <UIHtag tag='h1' className='mb-8 dark:text-white'>
           Hot Bids
         </UIHtag>
+  
         <GridContainer NFTBalance={NFTBalance} fetchSuccess={fetchSuccess} />
         <UIButton
           onClick={updateNFTBalance}
@@ -88,3 +89,10 @@ export const HomePage = () => {
     </main>
   );
 };
+
+/* 
+
+
+     <option value='all'> All </option>
+      <option value='listed'>Recently Listed</option>
+      <option value='visited'> Most Visited</option>*/
