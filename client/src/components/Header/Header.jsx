@@ -4,7 +4,7 @@ import { useDarkMode } from '../../hooks/useDarkMode';
 
 import { UILogo } from '../../components/UI-Kit';
 import { Navbar } from '../../components/Navbar';
-import { Search } from '../../components/Search';
+import { Search } from '../Search';
 
 export const Header = () => {
   const [isDarkMode, toggleDarkMode] = useDarkMode();

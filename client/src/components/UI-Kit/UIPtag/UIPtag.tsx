@@ -1,7 +1,10 @@
-import React from 'react'
+import cn from 'classnames';
+import { PtagProps } from './UIPtag.props';
 
-export const UIPtag = ({children}) => {
+export const UIPtag = ({ className, children }: PtagProps) => {
   return (
-    <p>UIPtag</p>
-  )
-}
+    <p className={cn('max-h-96 overflow-auto overscroll-auto', className)}>
+      {children}
+    </p>
+  );
+};

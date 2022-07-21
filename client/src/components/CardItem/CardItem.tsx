@@ -4,9 +4,9 @@ import { Like } from '../Like';
 import { PictureItem } from '../PictureItem';
 import { CardLoader } from '../CardLoader';
 
-import { CardProps } from './UICard.props';
+import { CardProps } from './CardItem.props';
 
-export const UICard = ({ loading, nftItem, imageSrc, name}: CardProps) => {
+export const CardItem = ({ loading, nftItem, imageSrc, name}: CardProps) => {
 
   return (
     <>
@@ -33,7 +33,7 @@ export const UICard = ({ loading, nftItem, imageSrc, name}: CardProps) => {
               <div>
                 <span className='font-semibold'>0.3</span> ETH
               </div>
-              <Like numberOfLikes={15} nftItem={nftItem} />
+              <Like counter={15} nftItem={nftItem} />
             </div>
           </div>
         </div>

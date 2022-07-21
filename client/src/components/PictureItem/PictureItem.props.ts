@@ -5,7 +5,7 @@ export interface PictureItemProps
     ObjectHTMLAttributes<HTMLImageElement>,
     HTMLImageElement
   > {
-  pictureImage: string;
-  pictureName: string;
-  className: string,
+  pictureImage: string | undefined;
+  pictureName: string | undefined;
+  className?: string;
 }

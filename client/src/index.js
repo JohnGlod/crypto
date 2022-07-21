@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 
 import './index.css';
-import store from './store';
+import store  from './store';
 import Root  from './Root';
 
 ReactDOM.render(

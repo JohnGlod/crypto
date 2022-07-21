@@ -19,6 +19,7 @@ declare module "\*.json" {
   export default content;
 }
 
-export interface INFT {
-  
+declare module "\*.webm"{
+  const content: string;
+  export default content;
 }

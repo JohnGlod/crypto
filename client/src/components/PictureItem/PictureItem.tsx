@@ -6,7 +6,7 @@ import { PictureItemProps } from './PictureItem.props';
 export const PictureItem = ({
   pictureImage,
   pictureName,
-  className,
+  className = '',
 }: PictureItemProps) => (
   <object
     className={cn('object-cover object-center rounded-lg', className)}

@@ -8,5 +8,5 @@ export interface HtagProps
   tag: 'h1' | 'h2' | 'h3';
   children: ReactNode;
   className?: string;
-  theme: 'light' | 'dark';
+  theme?: 'light' | 'dark';
 }

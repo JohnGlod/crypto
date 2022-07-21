@@ -1,14 +1,14 @@
 import { useNavigate } from 'react-router-dom';
-
+import cn from 'classnames';
 import { UIButton } from '../';
 
 import { InfoProps } from './UIInfo.props';
 import CatFail from './image/cat-fail.gif';
 
-export const UIInfo = ({ infoTitle, infoText }: InfoProps): JSX.Element => {
+export const UIInfo = ({ infoTitle, infoText, className}: InfoProps): JSX.Element => {
   const navigate = useNavigate();
   return (
-    <div className='flex flex-col items-center justify-center w-full py-5 px-2 h-auto gap-5'>
+    <div className={cn({'flex flex-col items-center justify-center w-full py-5 px-2 h-auto gap-5': true, className})}>
       <img
         className='dark:border-4 rounded-lg max-w-[300px]'
         src={CatFail}

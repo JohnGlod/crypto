@@ -2,7 +2,7 @@ import cn from 'classnames';
 
 import { HtagProps } from './UIHtag.props';
 
-export const UIHtag = ({ tag, children, className, theme }: HtagProps) => {
+export const UIHtag = ({ tag, children, className, theme = 'light'}: HtagProps) => {
   switch (tag) {
     case 'h1':
       return (

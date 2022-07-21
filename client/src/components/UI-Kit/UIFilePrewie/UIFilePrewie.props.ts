@@ -1,5 +1,5 @@
 export interface FilePrewieProps {
-  fileName: string;
-  fileSrc: string;
+  fileName: string | undefined;
+  fileSrc: string | undefined;
   fileType: string;
 }

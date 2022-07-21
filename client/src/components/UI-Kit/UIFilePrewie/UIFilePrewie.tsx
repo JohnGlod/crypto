@@ -8,7 +8,7 @@ export const UIFilePrewie = ({
   <div className='w-full p-5 outline-none border border-solid border-gray-light rounded-lg font-semibold text-center'>
     File name: <span className='font-normal'>{fileName} </span>
     <div className='flex items-center justify-center p-4 '>
-      {fileType.substr(0, 5) === 'image' ? (
+      {fileType.substring(0, 5) === 'image' ? (
         <img src={fileSrc} alt='preview' className='w-fit h-fit rounded-lg' />
       ) : (
         <video width='480' controls poster={fileSrc}>
