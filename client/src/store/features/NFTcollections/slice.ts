@@ -8,7 +8,13 @@ export interface NFTCollectionsState {
   status: string | null;
   error: string | null;
 }
-const initialState: NFTCollectionsState = {
+
+export interface ActionResult {
+  result: INFT[];
+  cursor: string;
+}
+
+export const initialNFTcollectionsState: NFTCollectionsState = {
   NFTCollections: [],
   cursor: false,
   status: null,
@@ -17,9 +23,9 @@ const initialState: NFTCollectionsState = {
 
 const NFTCollections = createSlice({
   name: 'NFTCollections',
-  initialState,
+  initialState: initialNFTcollectionsState,
   reducers: {
-    setNFTCollections(state, action) {
+    setNFTCollections(state, action: PayloadAction<ActionResult>) {
       return {
         ...state,
         NFTCollections: action.payload.result,

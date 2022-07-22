@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction} from '@reduxjs/toolkit';
 import { RootState } from '../..';
 import { INFT } from '../../../models/INFT';
 
@@ -8,15 +8,20 @@ export interface FavoritesState {
   error: string | null;
 }
 
-export const initialState: FavoritesState = {
+export interface ActionId {
+  id: string;
+}
+
+export const initialFavoritesState: FavoritesState = {
   favorites: [],
   status: null,
   error: null,
 };
 
+
 const favoriteSlice = createSlice({
   name: 'favorites',
-  initialState,
+  initialState: initialFavoritesState,
   reducers: {
     setItemToFavorite(state, action: PayloadAction<INFT>) {
       const findIdx = state.favorites.findIndex(
@@ -25,9 +30,9 @@ const favoriteSlice = createSlice({
 
       if (findIdx < 0) state.favorites.push(action.payload);
     },
-    removeItemFromFavorite(state, action: PayloadAction<INFT>) {
+    removeItemFromFavorite(state, action: PayloadAction<ActionId>) {
       const newTodos = state.favorites.filter(
-        ({ token_address }) => token_address !== action.payload.token_address
+        ({ token_id }) => token_id !== action.payload.id
       );
       state.favorites = newTodos;
     },

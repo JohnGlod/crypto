@@ -1,16 +1,25 @@
+import {
+  combineReducers,
+  configureStore,
+  PreloadedState,
+} from '@reduxjs/toolkit';
+import NFTCollectionsReducer from './features/NFTcollections/slice';
+import favoritesReducer from './features/favorites/slice';
 
-import { configureStore } from '@reduxjs/toolkit'
-import NFTCollections from './features/NFTcollections/slice'
-import favorites from './features/favorites/slice'
+const rootReducer = combineReducers({
+  favorites: favoritesReducer,
+  NFTCollections: NFTCollectionsReducer,
+});
 
-const store = configureStore({
-  reducer: {
-    NFTCollections, 
-    favorites,
-  },
-})
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+const setupStore = (preloadedState?: PreloadedState<RootState>) => {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState,
+  });
+};
 
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = AppStore['dispatch'];
 
-export default store
+export default setupStore;

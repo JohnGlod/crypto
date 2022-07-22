@@ -17,7 +17,7 @@ export const Like = ({ rounded = false, counter = 10, nftItem} : LikeProps) => {
 
   const handleClick = () => { 
     if (liked) {
-      dispath(removeItemFromFavorite(nftItem));
+      dispath(removeItemFromFavorite({ id: nftItem.token_id}));
     } else {
       dispath(setItemToFavorite(nftItem));
     }
