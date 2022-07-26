@@ -7,7 +7,7 @@ import reducer, {
   selectFavorites,
 } from './slice';
 
-describe('Name of the group', () => {
+describe('Favorites slice', () => {
   const nft = {
     block_number_minted: '13371817',
     contract_type: 'ERC1155',

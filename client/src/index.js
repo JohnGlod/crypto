@@ -8,7 +8,7 @@ import store  from './store';
 import Root  from './Root';
 
 ReactDOM.render(
-  <Root store={store} />,
+  <Root store={store()} />,
   document.getElementById('root')
 ); 
 

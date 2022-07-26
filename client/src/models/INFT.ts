@@ -16,9 +16,23 @@ export interface INFT {
   minter_address?: string | undefined;
   block_number_minted?: string | undefined;
   transaction_minted?: string | undefined;
-  last_token_uri_sync?: string | undefined;
-  last_metadata_sync?: string | undefined;
-  created_at?: string | undefined;
+  last_token_uri_sync?: string | undefined | null;
+  last_metadata_sync?: string | undefined | null;
 
+  created_at?: string | undefined;
+  is_valid?: number | undefined | null;
   synced_at?: string | undefined;
+  syncing?: number | undefined | null;
+  frozen?: number | undefined | null;
+  resyncing?: number | undefined | null;
+  transfer_index?: number[] | [];
+  batch_id?: string | undefined | null;
+  metadata_name?: string | undefined | null;
+  metadata_description?: string | undefined | null;
+  metadata_attributes?: string | undefined | null;
+  opensea_lookup?: string | undefined | null;
+  frozen_log_index?: string | undefined | null;
+  imported?: string | undefined | null;
+  createdAt?: string | undefined;
+  updatedAt?: string | undefined;
 }

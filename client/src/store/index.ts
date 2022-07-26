@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
   NFTCollections: NFTCollectionsReducer,
 });
 
-const setupStore = (preloadedState?: PreloadedState<RootState>) => {
+const store = (preloadedState?: PreloadedState<RootState>) => {
   return configureStore({
     reducer: rootReducer,
     preloadedState,
@@ -19,7 +19,7 @@ const setupStore = (preloadedState?: PreloadedState<RootState>) => {
 };
 
 export type RootState = ReturnType<typeof rootReducer>;
-export type AppStore = ReturnType<typeof setupStore>;
+export type AppStore = ReturnType<typeof store>;
 export type AppDispatch = AppStore['dispatch'];
 
-export default setupStore;
+export default store;
