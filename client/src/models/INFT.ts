@@ -7,19 +7,21 @@ export interface IMetadata {
 }
 
 export interface INFT {
+  block_number_minted?: string | undefined;
+  contract_type: string;
+  created_at?: string | undefined;
+  metadata: IMetadata;
   token_address: string;
   token_id: string;
-  contract_type: string;
-  token_uri: string;
-  metadata: IMetadata;
-  token_hash: unknown;
-  minter_address?: string | undefined;
-  block_number_minted?: string | undefined;
-  transaction_minted?: string | undefined;
   last_token_uri_sync?: string | undefined | null;
   last_metadata_sync?: string | undefined | null;
+  token_uri: string;
+  token_hash: unknown;
+  minter_address?: string | undefined;
+  transaction_minted?: string | undefined;
 
-  created_at?: string | undefined;
+
+/*   
   is_valid?: number | undefined | null;
   synced_at?: string | undefined;
   syncing?: number | undefined | null;
@@ -34,5 +36,5 @@ export interface INFT {
   frozen_log_index?: string | undefined | null;
   imported?: string | undefined | null;
   createdAt?: string | undefined;
-  updatedAt?: string | undefined;
+  updatedAt?: string | undefined; */
 }

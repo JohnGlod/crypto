@@ -11,7 +11,7 @@ export interface NFTCollectionsState {
 
 export interface ActionResult {
   result: INFT[];
-  cursor: string;
+  cursor: string | false;
 }
 
 export const initialNFTcollectionsState: NFTCollectionsState = {
