@@ -1,15 +1,17 @@
-// @ts-nocheck
+import { useState } from 'react';
 
-import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { DragDropFile } from '../../components/DragDropFile';
+import { IMetadata } from '../../models/INFT';
 
-import { UIButton, UIFilePrewie } from '../../components/UI-Kit';
+import { DragDropFile } from '../../components/DragDropFile';
+import { createIPFS, savingMeta } from '../../utils';
+import { UIButton, UIFilePrewie, UIPtag } from '../../components/UI-Kit';
 import { ReactComponent as ArrowDown } from '../../assets/icons/arrowDown.svg';
 
 export const CreateItem = () => {
   const [file, setFile] = useState(null);
+
   const {
     register,
     formState: { errors, isValid },
@@ -19,18 +21,22 @@ export const CreateItem = () => {
     mode: 'onBlur',
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data: IMetadata) => {
     if (!file) {
       return;
     }
-    console.log({ ...data, file }, 'onSubmit data');
+
+    const url = await createIPFS(data, file);
+    const result = await savingMeta(data, url);
+
     reset();
     setFile(null);
+    
   };
 
   return (
     <section className='w-full p-8 dark:text-white max-w-screen-md mx-auto sm:px-6 lg:px-8'>
-      <form action='#' className='' onSubmit={handleSubmit(onSubmit)}>
+      <form action='#' onSubmit={handleSubmit(onSubmit)}>
         <fieldset className='flex flex-col gap-[55px] mb-[50px] '>
           <legend className='font-bold hidden md:block md:text-3xl md:font-semibold mb-10'>
             Create new Item
@@ -51,7 +57,7 @@ export const CreateItem = () => {
                 dark:border-dark dark:text-white dark:bg-black-1 dark:focus:border-white`}
                 type='text'
                 placeholder='Item Name'
-                {...register('itemName', {
+                {...register('name', {
                   required: 'The field is required',
                   minLength: {
                     value: 3,
@@ -60,15 +66,15 @@ export const CreateItem = () => {
                 })}
               />
             </label>
-            {errors?.itemName && (
-              <p className='text-red p-1'>{errors?.itemName?.message}</p>
+            {errors.name && (
+              <UIPtag className='text-red p-1'>{errors.name.message}</UIPtag>
             )}
           </div>
           <div className='w-full flex flex-col justify-between '>
             <label className='font-bold text-xl'>
               Description
               <textarea
-                {...register('itemDescr', {
+                {...register('description', {
                   required: 'The field is required',
                 })}
                 className={`mt-5 border border-solid rounded-lg px-5 focus:border-dark hover:border-dark w-full py-5 outline-none text-base border-gray-light 
@@ -76,8 +82,10 @@ export const CreateItem = () => {
                 placeholder='Decription of your item'
               ></textarea>
             </label>
-            {errors?.itemDescr && (
-              <p className='text-red p-1'>{errors?.itemDescr?.message}</p>
+            {errors?.description && (
+              <UIPtag className='text-red p-1'>
+                {errors?.description?.message}
+              </UIPtag>
             )}
           </div>
           <div className='w-full flex flex-col justify-between '>
@@ -89,7 +97,7 @@ export const CreateItem = () => {
               >
                 <input
                   className='w-full outline-none dark:bg-black-1 text-base'
-                  {...register('itemPrice', {
+                  {...register('price', {
                     required: 'Choose the price you want',
                     min: {
                       value: 0.0001,
@@ -110,16 +118,12 @@ export const CreateItem = () => {
                 </div>
               </div>
             </label>
-            {errors?.itemPrice && (
-              <p className='text-red p-1'>{errors?.itemPrice?.message}</p>
+            {errors?.price && (
+              <UIPtag className='text-red p-1'>{errors?.price?.message}</UIPtag>
             )}
           </div>
         </fieldset>
-        <UIButton
-          type='submit'
-          appearance='primary'
-          disabled={!isValid}
-        >
+        <UIButton type='submit' appearance='primary' disabled={!isValid}>
           Create Item
         </UIButton>
       </form>

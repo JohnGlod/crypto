@@ -1,6 +1,10 @@
-import { DetailedHTMLProps, HTMLAttributes } from "react";
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 
-export interface PtagProps extends DetailedHTMLProps<HTMLAttributes<HTMLParamElement>, HTMLParamElement>{
+export interface PtagProps
+  extends DetailedHTMLProps<
+    HTMLAttributes<HTMLParamElement>,
+    HTMLParamElement
+  > {
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }

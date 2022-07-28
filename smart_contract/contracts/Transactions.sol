@@ -7,7 +7,7 @@ contract Transactions {
     event Transfer(
         address from,
         address receiver,
-        uint amount,
+        uint256 amount,
         string message,
         uint256 timestamp,
         string keyword
@@ -16,7 +16,7 @@ contract Transactions {
     struct TransferStruct {
         address sender;
         address receiver;
-        uint amount;
+        uint256 amount;
         string message;
         uint256 timestamp;
         string keyword;
@@ -26,7 +26,7 @@ contract Transactions {
 
     function addBlockchain(
         address payable receiver,
-        uint amount,
+        uint256 amount,
         string memory message,
         string memory keyword
     ) public {
@@ -49,7 +49,6 @@ contract Transactions {
             block.timestamp,
             keyword
         );
-
     }
 
     function getAllTransactions()
@@ -57,10 +56,10 @@ contract Transactions {
         view
         returns (TransferStruct[] memory)
     {
-      return transactions;
+        return transactions;
     }
 
     function getTransactionCount() public view returns (uint256) {
-      return transactionCounter;
+        return transactionCounter;
     }
 }
