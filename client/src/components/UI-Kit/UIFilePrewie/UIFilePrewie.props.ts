@@ -1,5 +1,5 @@
-export interface FilePrewieProps {
-  fileName: string | undefined;
-  fileSrc: string | undefined;
+export interface FilePrewieProps extends File {
+  fileName: string;
+  fileSrc: string;
   fileType: string;
 }
