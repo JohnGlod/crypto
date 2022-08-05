@@ -12,6 +12,6 @@ import '@nomiclabs/hardhat-waffle';
 import '@nomiclabs/hardhat-ethers'; // types
 import { HardhatUserConfig } from 'hardhat/config';
 const config: HardhatUserConfig = {
-  solidity: '0.8.0',
+  solidity: '0.8.4',
 };
 export default config;

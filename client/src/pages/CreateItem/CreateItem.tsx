@@ -1,6 +1,6 @@
 import { useState } from 'react';
-
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { useMoralis, useApiContract } from 'react-moralis';
 
 import { IMetadata } from '../../models/INFT';
 
@@ -8,6 +8,7 @@ import { DragDropFile } from '../../components/DragDropFile';
 import { SocialList } from '../../components/SocialList';
 import { PictureItem } from '../../components/PictureItem';
 import { createIPFS, savingMeta } from '../../utils';
+
 import {
   UIButton,
   UIFilePrewie,
@@ -15,33 +16,56 @@ import {
   UIDialog,
   UIHtag,
 } from '../../components/UI-Kit';
+
 import { ReactComponent as ArrowDown } from '../../assets/icons/arrowDown.svg';
+import { contractAbi, contractAddress } from '../../utils/constants';
 
 export const CreateItem = () => {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
+  const { user } = useMoralis();
   const [upload, setUpload] = useState(false);
   const [url, setUrl] = useState('');
+  const [metadata, setMetadata] = useState<string | null>(null);
+  
+  const { data, error, isFetching, isLoading, runContractFunction } =
+    useApiContract({
+      abi: JSON.stringify(contractAbi),
+      address: contractAddress,
+      functionName: 'mint',
+      chain: 'polygon',
+      params: metadata,
+      providerUrl: user?.get('ethAddress'),
+    });
+
   const {
     register,
     formState: { errors, isValid },
     handleSubmit,
     reset,
-  } = useForm({
+  } = useForm<IMetadata>({
     mode: 'onBlur',
   });
 
-  const onSubmit = async (data: IMetadata) => {
+  const onSubmit: SubmitHandler<IMetadata> = async (data) => {
     if (!file) {
       return;
     }
-
-    const url = await createIPFS(data, file);
-    setUrl(url);
-    const result = await savingMeta(data, url);
-    setUpload((prev) => !prev);
-    
-    reset();
-    setFile(null);
+    try {
+      if (user) {
+        const url = await createIPFS(data, file);
+        setUrl(url);
+        const result = await savingMeta(data, url);
+        setMetadata(result);
+        setUpload((prev) => !prev)
+        /* The implementation does not work, we need to dig even deeper. */
+        runContractFunction().then()
+        
+        reset();
+        setFile(null);
+      }
+    } catch (error) {
+      throw Error('Oops! An error occurred while creating NFTs.');
+    }
   };
 
   return (
@@ -97,7 +121,9 @@ export const CreateItem = () => {
                 />
               </label>
               {errors.name && (
-                <UIPtag className='text-red p-1'>{errors.name.message}</UIPtag>
+                <UIPtag className='text-red p-1'>
+                  {errors?.name?.message}
+                </UIPtag>
               )}
             </div>
             <div className='w-full flex flex-col justify-between '>
@@ -112,12 +138,13 @@ export const CreateItem = () => {
                   placeholder='Decription of your item'
                 ></textarea>
               </label>
-              {errors?.description && (
+              {errors.description && (
                 <UIPtag className='text-red p-1'>
                   {errors?.description?.message}
                 </UIPtag>
               )}
             </div>
+            {/*   
             <div className='w-full flex flex-col justify-between '>
               <label className='font-bold text-xl'>
                 Price
@@ -148,12 +175,9 @@ export const CreateItem = () => {
                   </div>
                 </div>
               </label>
-              {errors?.price && (
-                <UIPtag className='text-red p-1'>
-                  {errors?.price?.message}
-                </UIPtag>
-              )}
-            </div>
+              {errors.price && errors?.price?.message}
+            </div> 
+            */}
           </fieldset>
           <UIButton type='submit' appearance='primary' disabled={!isValid}>
             Create Item

@@ -1,4 +1,4 @@
-export interface FilePrewieProps extends File {
+export interface FilePrewieProps {
   fileName: string;
   fileSrc: string;
   fileType: string;

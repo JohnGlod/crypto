@@ -58,7 +58,7 @@ export const Home = () => {
         dispatch(setNFTCollections(response));
       }
     } catch (error) {
-      throw new Error('Request SearchNFTs ended with an error', error);
+      throw new Error('Request SearchNFTs ended with an error');
     } finally {
       setDisableUpdate(false);
     }
