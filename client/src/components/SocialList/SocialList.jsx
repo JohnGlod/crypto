@@ -1,3 +1,4 @@
+import React from 'react'
 import { ReactComponent as IconInst } from '../../assets/icons/inst.svg';
 import { ReactComponent as IconTgm } from '../../assets/icons/tgm.svg';
 import { ReactComponent as IconTwitter } from '../../assets/icons/twitter.svg';

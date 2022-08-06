@@ -1,10 +1,12 @@
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Logo } from '../../components/Logo';
-import { SocialList } from '../../components/SocialList';
-import { Button } from '../../components/Button';
+import { useDarkMode } from '../../hooks/useDarkMode';
 
-const ListItem = ({url, text}) => {
+import { SocialList } from '../../components/SocialList';
+import { UILogo, UIButton } from '../../components/UI-Kit';
+
+const ListItem = ({ url, text }) => {
   return (
     <li className='hover:text-red hover:underline ease-in-out transition-all underline-offset-4 duration-300 '>
       <NavLink to={url}>{text}</NavLink>
@@ -32,6 +34,8 @@ const FooterList = [
 ];
 
 export const Footer = () => {
+  const [isDarkMode, toggleDarkMode] = useDarkMode();
+
   return (
     <footer className='w-full dark:text-white'>
       <div className='border-y-gray-light border-x-0 dark:border-y-black-1 border-solid border-2 '>
@@ -41,8 +45,8 @@ export const Footer = () => {
           <div
             className={`flex-col flex gap-5 flex-auto w-full md:flex-none md:w-auto`}
           >
-            <Logo />
-            <h4 className='text-base'>Get the lastes Updates</h4>
+            <UILogo logoClick={toggleDarkMode} theme={isDarkMode} />
+            <span className='text-base'>Get the lastes Updates</span>
             <label htmlFor='' className={`flex `}>
               <input
                 type='email'
@@ -50,12 +54,12 @@ export const Footer = () => {
               dark:bg-black-2 dark:border-none dark:text-white`}
                 placeholder={'Your Email'}
               />
-              <Button
+              <UIButton
                 type='submit'
-                cName='text-white rounded-lg bg-red py-2 px-4'
+                appearance='primary'
               >
                 Email Me!
-              </Button>
+              </UIButton>
             </label>
           </div>
           {FooterList.map(({ title, data }, index) => (

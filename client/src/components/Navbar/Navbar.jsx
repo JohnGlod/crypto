@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useMoralis } from 'react-moralis';
 import { HiMenu } from 'react-icons/hi';
 import { AiOutlineClose } from 'react-icons/ai';
 
-import { Button } from '../Button';
+import { UIButton } from '../UI-Kit';
 
 const NavbarItem = ({ title, classProps = '', url, closeMenu }) => {
   return (
@@ -41,7 +41,7 @@ export const Navbar = () => {
   useEffect(() => {
     const html = window.document.documentElement;
     const scroll = toggleMenu ? 'overflow-hidden' : 'overflow-auto';
-
+    console.log(toggleMenu, 'toggleMenu');
     switch (scroll) {
       case 'overflow-hidden':
         html.classList.add(scroll);
@@ -50,7 +50,7 @@ export const Navbar = () => {
         html.classList.remove('overflow-hidden');
         break;
       default:
-        html.classList.add(scroll);
+        html.classList.add('overflow-auto');
         break;
     }
   }, [toggleMenu]);
@@ -86,18 +86,19 @@ export const Navbar = () => {
               key={index}
               title={item.title}
               url={item.url}
-              closeMenu={closeMenu}
+              closeMenu={toggleMenu ? closeMenu : undefined }
             />
           ))}
         </ul>
 
         <div className='justify-center flex gap-4 border-solid border-t border-gray-light dark:border-black-1 pt-4 lg:gap-0 lg:justify-start lg:p-0 lg:border-none'>
-          <Button cName='color-accent lg:ml-4 text-white'>
+          <UIButton className='lg:ml-4' appearance='primary'>
             <NavLink to='/create'>Create</NavLink>
-          </Button>
-          <Button
-            cName='border border-red text-red lg:ml-[20px] font-semibold'
-            func={
+          </UIButton>
+          <UIButton
+            className='lg:ml-[20px]'
+            appearance='secondary'
+            onClick={
               !isAuthenticated
                 ? () =>
                     authenticate({
@@ -108,7 +109,7 @@ export const Navbar = () => {
             }
           >
             {!isAuthenticated ? 'Connect' : 'Disconnect'}
-          </Button>
+          </UIButton>
         </div>
       </nav>
     </>

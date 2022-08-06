@@ -9,6 +9,9 @@ package-lock.json
 # testing
 /coverage
 
+#FilePrewie
+**/UI-Kit/**/media
+
 # production
 /build
 

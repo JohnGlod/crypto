@@ -28,7 +28,7 @@
 }
 
 .color-accent {
-  background: linear-gradient(101.12deg, #eb1484 27.35%, #c91cc3 99.99%, #c81cc5 100%, #c81cc5 100%);
+  background-image:  linear-gradient(101.12deg, #eb1484 27.35%, #c91cc3 99.99%, #c81cc5 100%, #c81cc5 100%);
 }
 
 textarea {
@@ -40,4 +40,3 @@ textarea {
   font-weight: 600;
   border-bottom: 2px solid #da18a3;
 }
-
