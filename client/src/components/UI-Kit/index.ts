@@ -8,6 +8,7 @@ import { UIInfo } from './UIInfo/UIInfo';
 import { UISelect } from './UISelect/UISelect';
 import { UIHtag } from './UIHtag/UIHtag';
 import { UIPtag } from './UIPtag/UIPtag';
+import { UISearch } from './UISearch/UISearch';
 
 export {
   UIAvatar,
@@ -18,6 +19,7 @@ export {
   UIFilePrewie,
   UIInfo,
   UISelect,
+  UISearch,
   UIHtag,
-  UIPtag
+  UIPtag,
 };
