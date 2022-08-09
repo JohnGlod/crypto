@@ -2,46 +2,39 @@ import cn from 'classnames';
 
 import { SelectProps, IOptions } from './UISelect.props';
 
-const SelectItem = ({ key, value, text }: IOptions) => {
-  return (
-    <option value={value}>
-      {text}
-    </option>
-  );
-};
-
 export const UISelect = ({
   className,
   options,
   placeholder,
-  name,
-  value,
+  width = 'normal',
   onChange,
-  size = 'normal',
+  value,
   ...props
 }: SelectProps) => (
   <select
-    name={name}
-    value={value}
-    onChange={onChange}
     {...props}
+    onChange={onChange}
+    value={value}
+    data-testid='select'
     className={cn(
       {
         'px-5 py-2 inline-block text-dark border rounded-lg border-solid border-gray-light focus:border-white dark:text-white dark:border-white dark:bg-dark dark:focus:border-red cursor-pointer':
           true,
-        'w-[230px]': size === 'normal',
-        'w-full': size === 'full',
+        'w-[230px]': width === 'normal',
+        'w-full': width === 'full',
       },
       className
     )}
   >
     {placeholder && (
-      <option value={placeholder} hidden={true} selected>
+      <option value={placeholder} hidden selected>
         {placeholder}
       </option>
     )}
-    {options.map((item) => (
-      <SelectItem key={item.key} value={item.value} text={item.text} />
+    {options.map(({key, value, text }: IOptions) => (
+      <option key={key} value={value}>
+        {text}
+      </option>
     ))}
   </select>
 );

@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import React, {ChangeEventHandler} from 'react';
 
 export interface IOptions {
   key: any;
@@ -7,14 +7,10 @@ export interface IOptions {
 }
 
 export interface SelectProps
-  extends DetailedHTMLProps<
-    HTMLAttributes<HTMLSelectElement>,
-    HTMLSelectElement
-  > {
+  extends React.SelectHTMLAttributes<HTMLSelectElement> {
   options: IOptions[];
-  className?: string;
   placeholder: string;
-  size?: 'normal' | 'full';
-  name: string;
-  value: string;
+  width?: 'normal' | 'full';
+  value: string | ReadonlyArray<string> | number;
+  onChange: ChangeEventHandler<HTMLSelectElement>;
 }

@@ -29,6 +29,6 @@ Default.args = {
   placeholder: 'Placeholder',
   name: 'name',
   onChange: () => {},
-  size: 'normal',
+  width: 'normal',
 };
 
