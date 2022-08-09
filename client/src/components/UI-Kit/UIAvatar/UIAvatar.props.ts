@@ -4,5 +4,5 @@ export interface AvatarProps {
   avatarSrc: string;
   avatarAlt: string;
   avatarSize: 'small' | 'medium';
-  avatarClick?: React.MouseEventHandler<HTMLDivElement>;
+  avatarClick?: (event: React.MouseEvent<HTMLImageElement>) => void
 }

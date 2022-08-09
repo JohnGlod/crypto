@@ -3,9 +3,9 @@ import cn from 'classnames';
 import { AvatarProps } from './UIAvatar.props';
 
 export const UIAvatar = ({
-  avatarAlt,
   avatarSize,
   avatarSrc,
+  avatarAlt,
   avatarClick,
 }: AvatarProps) => (
   <div
